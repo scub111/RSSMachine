@@ -1,0 +1,14 @@
+D:\_Projects\RSSMachine\RSSMachine\bin\Debug\RSSMachine.exe.config
+D:\_Projects\RSSMachine\RSSMachine\bin\Debug\RSSMachine.exe
+D:\_Projects\RSSMachine\RSSMachine\bin\Debug\RSSMachine.pdb
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.csprojResolveAssemblyReference.cache
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\MainWindow.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\App.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine_MarkupCompile.cache
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine_MarkupCompile.lref
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\MainWindow.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.g.resources
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.Properties.Resources.resources
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.csproj.GenerateResource.Cache
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.exe
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.pdb
