@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RSSMachine"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="RSSMachine" Height="939" Width="1440"
+        WindowState="Maximized" Loaded="MainWindow_Loaded">
+    <Viewbox>
+        <Canvas x:Name="LayoutRoot" Height="1920" Width="1080" Background="{x:Null}"/>
+    </Viewbox>
 </Window>

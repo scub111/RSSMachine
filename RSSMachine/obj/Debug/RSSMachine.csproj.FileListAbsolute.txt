@@ -12,3 +12,14 @@ D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.Properties.Resources.res
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.csproj.GenerateResource.Cache
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.exe
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine.pdb
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\StartView.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\StartView.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\AgreementView.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\AgreementView.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\ExeptionView.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\ExeptionView.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Controls\UpdateControl.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Controls\UpdateControl.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\TestDeviceView.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\TestDeviceView.baml

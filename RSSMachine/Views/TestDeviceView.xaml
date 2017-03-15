@@ -1,0 +1,13 @@
+﻿<local:ViewBase x:Class="RSSMachine.TestDeviceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RSSMachine"
+             mc:Ignorable="d"
+             Background="#200BBA" Height="1920" Width="1080" Loaded="ViewBase_Loaded">
+    <Grid>
+        <Button x:Name="btnBeep" Content="Beep" HorizontalAlignment="Left" Margin="60,76,0,0" VerticalAlignment="Top" Width="299" Height="140" FontSize="70" Click="btnBeep_Click"/>
+
+    </Grid>
+</local:ViewBase>

@@ -1,0 +1,31 @@
+﻿<local:ViewBase
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RSSMachine"
+             xmlns:WebControl="clr-namespace:WebControl" 
+             x:Class="RSSMachine.StartView"
+             mc:Ignorable="d" 
+             Height="1920" Width="1080" 
+             Background="#dddddd" Loaded="UserControl_Loaded" IsVisibleChanged="StartView_IsVisibleChanged">
+    <Grid x:Name="myGrid" Height="1920" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1145*"/>
+            <RowDefinition Height="311*"/>
+            <RowDefinition Height="464*"/>
+        </Grid.RowDefinitions>
+        <MediaElement x:Name="GIF" MediaEnded="GIF_MediaEnded" LoadedBehavior="Manual" UnloadedBehavior="Manual" Grid.Row="0" Margin="201,74,171,0" MediaOpened="GIF_MediaOpened"/>
+        <Label Grid.Row="1" Foreground="#003399" FontWeight="Bold" FontSize="190" Margin="225,100,224,0" Content="ТАБАК" />
+        <Border  MouseLeftButtonDown="PressButton_Click" 
+			Background="Transparent" CornerRadius="70" BorderThickness="4" 
+			BorderBrush="#999999" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="274,90,286,262" Grid.Row="2">
+            <Grid>
+                <Label Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" 
+					FontFamily="Roboto-Regular"  FontSize="40" BorderBrush="Transparent"  
+					RenderTransformOrigin="0.5,0.5" Content="Нажмите для выбора" />
+            </Grid>
+        </Border>
+        <WebControl:UpdateControl x:Name="updGIF" HorizontalAlignment="Left" Margin="405,450,0,0" VerticalAlignment="Top" Height="319" Width="293"/>
+    </Grid>
+</local:ViewBase>

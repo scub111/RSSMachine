@@ -55,6 +55,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\ViewBase.cs" />
+    <Compile Include="Controls\UpdateControl.xaml.cs">
+      <DependentUpon>UpdateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\RSSController.cs" />
+    <Compile Include="Views\TestDeviceView.xaml.cs">
+      <DependentUpon>TestDeviceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExeptionView.xaml.cs">
+      <DependentUpon>ExeptionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AgreementView.xaml.cs">
+      <DependentUpon>AgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartView.xaml.cs">
+      <DependentUpon>StartView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\UpdateControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TestDeviceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExeptionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +96,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\UserControlEx.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\StartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,6 +132,69 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\18+.png" />
+    <Resource Include="image\3Dpin.gif" />
+    <Resource Include="image\active.png" />
+    <Resource Include="image\back.png" />
+    <Resource Include="image\back_for_smoke.png" />
+    <Resource Include="image\bi\group.png" />
+    <Resource Include="image\button_smoke.png" />
+    <Resource Include="image\choose_other_param.png" />
+    <Resource Include="image\circle.png" />
+    <Resource Include="image\close.png" />
+    <Resource Include="image\continium.png" />
+    <Resource Include="image\down_gradient.png" />
+    <Resource Include="image\down_home.png" />
+    <Resource Include="image\down_left.png" />
+    <Resource Include="image\down_line_gray.png" />
+    <Resource Include="image\down_line_off.png" />
+    <Resource Include="image\down_line_on.png" />
+    <Resource Include="image\down_right.png" />
+    <Resource Include="image\do_69.png" />
+    <Resource Include="image\do_99.png" />
+    <Resource Include="image\drop.png" />
+    <Resource Include="image\eighteen.png" />
+    <Resource Include="image\End.png" />
+    <Resource Include="image\find_other_param.png" />
+    <Resource Include="image\first_slide.png" />
+    <Resource Include="image\group.png" />
+    <Resource Include="image\home.png" />
+    <Resource Include="image\kapla.png" />
+    <Resource Include="image\king_size.png" />
+    <Resource Include="image\king_size_super.png" />
+    <Resource Include="image\kompakt.png" />
+    <Resource Include="image\left_page.png" />
+    <Resource Include="image\minus.png" />
+    <Resource Include="image\next.png" />
+    <Resource Include="image\No.png" />
+    <Resource Include="image\not_have.png" />
+    <Resource Include="image\ok.png" />
+    <Resource Include="image\other.png" />
+    <Resource Include="image\other_company.png" />
+    <Resource Include="image\ot_100.png" />
+    <Resource Include="image\plus.png" />
+    <Resource Include="image\Question.png" />
+    <Resource Include="image\right_page.png" />
+    <Resource Include="image\sort_form_down.png" />
+    <Resource Include="image\sort_form_down_black.png" />
+    <Resource Include="image\sort_form_up.png" />
+    <Resource Include="image\sort_form_up_black.png" />
+    <Resource Include="image\sort_mark_down.png" />
+    <Resource Include="image\sort_mark_down_black.png" />
+    <Resource Include="image\sort_mark_up.png" />
+    <Resource Include="image\sort_mark_up_black.png" />
+    <Resource Include="image\sort_mark_up_down.png" />
+    <Resource Include="image\sort_price_down.png" />
+    <Resource Include="image\sort_price_down_black.png" />
+    <Resource Include="image\sort_price_up.png" />
+    <Resource Include="image\super_slim.png" />
+    <Resource Include="image\take.png" />
+    <Resource Include="image\take_pachka_blue.png" />
+    <Resource Include="image\take_pachka_green.png" />
+    <Resource Include="image\waiting.png" />
+    <Resource Include="image\yes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

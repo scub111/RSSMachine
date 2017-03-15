@@ -1,0 +1,55 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="WebControl.UpdateControl"
+	d:DesignWidth="20" d:DesignHeight="20" Loaded="UpdateControl_Loaded">
+
+    <Viewbox>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="ControlChecked">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ControlUnchecked"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Canvas Width="20" Height="20" >
+            <Grid x:Name="grid" Height="20" Canvas.Left="-2" Width="24" RenderTransformOrigin="0.5,0.5">
+                <Path Stroke="Black" StrokeThickness="0" Data="M20,10 C20,15.5228 15.5228,20 10,20 C4.47715,20 0,15.5228 0,10 C0,4.47715 4.47715,0 10,0 C15.5228,0 20,4.47715 20,10 z M16,10 C16,13.3137 13.3137,16 10,16 C6.68629,16 4,13.3137 4,10 C4,6.68629 6.68629,4 10,4 C13.3137,4 16,6.68629 16,10 z" Stretch="Fill" UseLayoutRounding="False" Margin="2,0">
+                    <Path.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF0021B8" Offset="0.6"/>
+                            <GradientStop Color="White" Offset="0.8"/>
+                            <GradientStop Color="#FF001BC3" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Path.Fill>
+                </Path>
+                <Path Data="M24,8 L28,14 L32,8 L28,10 z" Stretch="Fill" Stroke="Black" StrokeThickness="0" UseLayoutRounding="False" Margin="0,6.999,16,7.001" Fill="Blue" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path Data="M24,8 L28,14 L32,8 L28,10 z" Stretch="Fill" Stroke="Black" StrokeThickness="0" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" Margin="16,6.999,0,7.001" Fill="Blue">
+                </Path>
+
+            </Grid>
+
+        </Canvas>
+    </Viewbox>
+</UserControl>
