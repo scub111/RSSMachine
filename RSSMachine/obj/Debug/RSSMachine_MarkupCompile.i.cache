@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\_Projects\RSSMachine\RSSMachine\App.xaml
-61688699548
+7-976863949
 
-17907129084
-13738642453
-Controls\UpdateControl.xaml;Views\TestDeviceView.xaml;Views\ExeptionView.xaml;Views\AgreementView.xaml;MainWindow.xaml;Views\StartView.xaml;
+181748371552
+15-1289323445
+Controls\UpdateControl.xaml;Windows\InfoWindow.xaml;Views\TestDeviceView.xaml;Views\ExeptionView.xaml;Views\AgreementView.xaml;Windows\MainWindow.xaml;Views\StartView.xaml;
 
-True
+False
 

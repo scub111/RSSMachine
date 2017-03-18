@@ -6,6 +6,18 @@
 	mc:Ignorable="d"
 	x:Class="WebControl.UpdateControl"
 	d:DesignWidth="20" d:DesignHeight="20" Loaded="UpdateControl_Loaded">
+    <UserControl.Resources>
+        <Storyboard x:Key="StoryboardUnchecked">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="grid" RepeatBehavior="Forever">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="180"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardUnchecked}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
 
     <Viewbox>
         <VisualStateManager.VisualStateGroups>
@@ -26,6 +38,14 @@
         </VisualStateManager.VisualStateGroups>
         <Canvas Width="20" Height="20" >
             <Grid x:Name="grid" Height="20" Canvas.Left="-2" Width="24" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
                 <Path Stroke="Black" StrokeThickness="0" Data="M20,10 C20,15.5228 15.5228,20 10,20 C4.47715,20 0,15.5228 0,10 C0,4.47715 4.47715,0 10,0 C15.5228,0 20,4.47715 20,10 z M16,10 C16,13.3137 13.3137,16 10,16 C6.68629,16 4,13.3137 4,10 C4,6.68629 6.68629,4 10,4 C13.3137,4 16,6.68629 16,10 z" Stretch="Fill" UseLayoutRounding="False" Margin="2,0">
                     <Path.Fill>
                         <RadialGradientBrush>
