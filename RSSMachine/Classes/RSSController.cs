@@ -38,10 +38,10 @@ namespace RSSMachine
 
     public class RSSController
     {
-        public RSSController(string portName)
+        public RSSController(string portName, bool simulation = false)
         {
             PortName = portName;
-            port = new SerialPort(portName, 115200, Parity.None, 8, StopBits.OnePointFive);
+            port = new RssMachineSerialPort(portName, simulation);
             port.ReadTimeout = 1000;
             port.WriteTimeout = 1000;
 
@@ -62,7 +62,7 @@ namespace RSSMachine
         /// <summary>
         /// COM-порт.
         /// </summary>
-        SerialPort port;
+        RssMachineSerialPort port;
 
         Task loop;
 

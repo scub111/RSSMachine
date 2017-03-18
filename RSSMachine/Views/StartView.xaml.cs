@@ -35,6 +35,8 @@ namespace RSSMachine
             string puth = Environment.CurrentDirectory + "\\3Dpin.gif";
             GIF.Source = new Uri(puth);
             GIF.Play();
+            btnStart.Visibility = Visibility.Hidden;
+            btnStop.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -54,11 +56,6 @@ namespace RSSMachine
             GIFPlay();
         }
 
-        private void PressButton_Click(object sender, RoutedEventArgs e)
-        {
-            PressButtonClicked(this, EventArgs.Empty);
-        }
-
         private void StartView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (Visibility == Visibility.Hidden)
@@ -68,7 +65,22 @@ namespace RSSMachine
 
         private void GIF_MediaOpened(object sender, RoutedEventArgs e)
         {
-            updGIF.Visibility = Visibility.Hidden;
+            updGIF.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            updGIF.Start();
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            updGIF.Stop();
+        }
+
+        private void HMIButton_Click(object sender, EventArgs e)
+        {
+            PressButtonClicked(this, EventArgs.Empty);
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RSSMachine"
         mc:Ignorable="d"
-        Title="InfoWindow" Height="300" Width="300">
+        Title="InfoWindow" Height="779.143" Width="495.428">
     <Viewbox>
         <Canvas x:Name="LayoutRoot" Height="1920" Width="1080" Background="{x:Null}"/>
     </Viewbox>

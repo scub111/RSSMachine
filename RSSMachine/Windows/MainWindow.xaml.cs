@@ -25,9 +25,7 @@ namespace RSSMachine
         {
             InitializeComponent();
 
-            rssController = new RSSController("COM13");
-
-
+            rssController = new RSSController("COM7");
         }
 
         /// <summary>
@@ -138,6 +136,11 @@ namespace RSSMachine
         private void AgreementView_ContinueButtonClicked(object sender, EventArgs e)
         {
             //startView = ActivateView<StartView>(startView, null);
+        }
+
+        private void MainWindow1_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -9,48 +9,57 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace WebControl
+namespace RSSMachine
 {
 	public partial class UpdateControl : UserControl
 	{
 		public UpdateControl()
 		{
 			// Требуется для инициализации переменных
-			InitializeComponent();            
-		}
+			InitializeComponent();
+            //RepeatBehavior="Forever"
+            sb = this.FindResource("StoryboardUnchecked") as Storyboard;
+            //sb.Stop(this);
+        }
 
-        private bool _checked;
-        public bool Checked
+        Storyboard sb;
+
+        /// <summary>
+        /// Запуск анимации.
+        /// </summary>
+        public void Start()
         {
-            get { return _checked;}
-            set
-            {
-                if (_checked == value) return;
-                _checked = value;
-                if (_checked)
-                {
-                    /*
-                    VisualStateManager.GoToState(this, "ControlChecked", true);
-                    if (StoryboardUnchecked.GetCurrentState() != ClockState.Active)
-                        StoryboardUnchecked.Begin();
-                    */
-                }
-                else
-                {
-                    VisualStateManager.GoToState(this, "ControlUnchecked", true);
-                    //StoryboardUnchecked.Stop();
-                }
-            }
+            sb.Begin(this, true);
+            //sb.RepeatBehavior = RepeatBehavior.Forever;
+        }
+
+        /// <summary>
+        /// Останов анимации.
+        /// </summary>
+        public void Stop()
+        {
+            //((Storyboard)this.Resources["StoryboardUnchecked"]).Stop();
+            sb.Stop(this);
         }
 
         private void UpdateControl_Loaded(object sender, RoutedEventArgs e)
         {
-            _checked = false;
+           // Stop();
             if (DesignerProperties.GetIsInDesignMode(this)) return;
-            VisualStateManager.GoToState(this, "ControlUnchecked", true);
+            //VisualStateManager.GoToState(this, "ControlUnchecked", true);
             /*if (StoryboardUnchecked.GetCurrentState() != ClockState.Active)
                 StoryboardUnchecked.Begin();
             */
         }
-	}
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (DesignerProperties.GetIsInDesignMode(this)) return;
+
+            if (Visibility == Visibility.Visible)
+                Start();
+            else
+                Stop();
+        }
+    }
 }

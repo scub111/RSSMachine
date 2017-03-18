@@ -27,3 +27,7 @@ D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Windows\InfoWindow.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Windows\InfoWindow.baml
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Windows\MainWindow.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Windows\MainWindow.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Controls\HMIButton.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Controls\HMIButton.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\WaitView.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\WaitView.baml

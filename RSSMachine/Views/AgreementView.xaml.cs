@@ -30,7 +30,7 @@ namespace RSSMachine
         /// </summary>
         public event EventHandler ContinueButtonClicked = delegate { };
 
-        private async void ContinueButton_Click(object sender, RoutedEventArgs e)
+        private async void btnContinue_Click(object sender, EventArgs e)
         {
             ContinueButtonClicked(this, EventArgs.Empty);
         }

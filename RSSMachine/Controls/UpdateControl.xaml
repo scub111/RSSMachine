@@ -4,21 +4,20 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	x:Class="WebControl.UpdateControl"
-	d:DesignWidth="20" d:DesignHeight="20" Loaded="UpdateControl_Loaded">
+	x:Class="RSSMachine.UpdateControl"
+	d:DesignWidth="20" d:DesignHeight="20" Loaded="UpdateControl_Loaded" IsVisibleChanged="UserControl_IsVisibleChanged">
     <UserControl.Resources>
         <Storyboard x:Key="StoryboardUnchecked">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="grid" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="grid" RepeatBehavior ="Forever">
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="180"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource StoryboardUnchecked}"/>
+            <!--<BeginStoryboard Storyboard="{StaticResource StoryboardUnchecked}"/>-->
         </EventTrigger>
     </UserControl.Triggers>
-
     <Viewbox>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">

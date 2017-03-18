@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RSSMachine"
              mc:Ignorable="d"
-             Background="#200BBA" Height="1920" Width="1080" Loaded="ViewBase_Loaded">
+             Background="#dddddd" Height="1920" Width="1080" Loaded="ViewBase_Loaded">
     <Grid>
         <Button x:Name="btnBeep" Content="Beep" HorizontalAlignment="Left" Margin="60,76,0,0" VerticalAlignment="Top" Width="299" Height="140" FontSize="70" Click="btnBeep_Click"/>
         <Button x:Name="btnGetStatus" Content="GetStatus" HorizontalAlignment="Left" Margin="60,280,0,0" VerticalAlignment="Top" Width="299" Height="140" FontSize="70" Click="btnGetStatus_Click"/>

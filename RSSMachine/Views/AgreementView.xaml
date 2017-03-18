@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              Height="1920" Width="1080" 
              Background="#dddddd">
-    
+
     <Grid Name="grid">
         <Grid.Background>
             <ImageBrush ImageSource="/image/back_for_smoke.png"/>
@@ -27,12 +27,6 @@
             табачную продукцию.' FontFamily="Roboto-Regular" Name="Block" FontSize="37px" Grid.Row="1" Margin="85px 0" Width="912px" 
                    HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" TextAlignment="Center" LineHeight="58">
         </TextBlock>
-        <Border Name="btn"  MouseLeftButtonDown="ContinueButton_Click" Grid.Row="2" VerticalAlignment="Top" Width="300px" Height="120px" Background="#669933" CornerRadius="70" >
-            <Grid >
-                <Label Name="continium" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent"  FontSize="38px" BorderBrush="Transparent" RenderTransformOrigin="0.5,0.5">
-                    Продолжить
-                </Label>
-            </Grid>
-        </Border>
+        <local:HMIButton x:Name="btnContinue" HorizontalAlignment="Left" Margin="354,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="104" Width="370" CaptionFontSize="50" Text="Продолжить" RectangleRadius="30" Color="#FF56FF07" Click="btnContinue_Click"/>
     </Grid>
 </local:ViewBase>

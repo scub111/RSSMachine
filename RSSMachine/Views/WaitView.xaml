@@ -1,0 +1,24 @@
+﻿<local:ViewBase x:Class="RSSMachine.WaitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RSSMachine"
+             mc:Ignorable="d" 
+             Height="1920" Width="1080" >
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/image/back_for_smoke.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1005px"/>
+            <RowDefinition Height="380px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Name="img" Height="612px" Width="612px" VerticalAlignment="Center" 
+               HorizontalAlignment="Center" Source="/image/group.png" Stretch="Fill"/>
+        <TextBlock FontFamily="Roboto-Regular" Grid.Row="1"  Width="912px" 
+                   HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" FontSize="100" TextWrapping="Wrap" TextAlignment="Center" Height="411" Text="Ожидайте...">
+        </TextBlock>
+    </Grid>
+</local:ViewBase>

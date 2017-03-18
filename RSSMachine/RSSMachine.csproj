@@ -60,10 +60,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\ViewBase.cs" />
+    <Compile Include="Controls\HMIButton.xaml.cs">
+      <DependentUpon>HMIButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UpdateControl.xaml.cs">
       <DependentUpon>UpdateControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\RSSController.cs" />
+    <Compile Include="Classes\HMIBase.cs" />
+    <Compile Include="Classes\RssMachineSerialPort.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\WaitView.xaml.cs">
+      <DependentUpon>WaitView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\InfoWindow.xaml.cs">
       <DependentUpon>InfoWindow.xaml</DependentUpon>
     </Compile>
@@ -79,9 +89,17 @@
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\HMIButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\UpdateControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WaitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\InfoWindow.xaml">
       <SubType>Designer</SubType>
