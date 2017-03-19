@@ -25,7 +25,7 @@ namespace RSSMachine
         {
             InitializeComponent();
 
-            rssController = new RSSController("COM7");
+            rssController = new RSSController("COM7", true);
         }
 
         /// <summary>
@@ -47,6 +47,16 @@ namespace RSSMachine
         /// Вид тестирования устройста.
         /// </summary>
         TestDeviceView testDeviceView;
+
+        /// <summary>
+        /// Вид окна ожидания.
+        /// </summary>
+        WaitView waitView;
+
+        /// <summary>
+        /// Вид окна выбора товара.
+        /// </summary>
+        SelectProductView selectProductView;
 
         /// <summary>
         /// Последний активный вид.
@@ -126,6 +136,27 @@ namespace RSSMachine
                 }
             );
         }
+
+        private void WaitViewCall()
+        {
+            waitView = ActivateView<WaitView>(waitView,
+                (s, a) =>
+                {
+                    ((WaitView)s).PostConstructor(rssController);
+                    ((WaitView)s).SetText("Ожидайте подтверждения от кассира...");
+                }
+            );
+        }
+        private void SelectProductViewCall()
+        {
+            selectProductView = ActivateView<SelectProductView>(selectProductView,
+                (s, a) =>
+                {
+                    ((SelectProductView)s).PostConstructor(rssController);
+                }
+            );
+        }        
+        
         #endregion
 
         private void StartView_PressButtonClicked(object sender, EventArgs e)
@@ -133,9 +164,36 @@ namespace RSSMachine
             AgreementViewCall();
         }
 
+        /// <summary>
+        /// Ожидание подтверждения от кассира.
+        /// </summary>
+        private async void WaitAnswer()
+        {
+            try
+            {
+                await rssController.Beep();
+                await rssController.WaitControlStatusChanged();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (rssController.ControlStatus.btnDeny)
+                this.Dispatcher.Invoke(StartViewCall);
+            else
+            {
+                if (rssController.ControlStatus.btnAllow)
+                    this.Dispatcher.Invoke(SelectProductViewCall);
+            }
+        }
+
         private void AgreementView_ContinueButtonClicked(object sender, EventArgs e)
         {
-            //startView = ActivateView<StartView>(startView, null);
+            WaitViewCall();
+
+            Task taskWait = new Task(WaitAnswer);
+            taskWait.Start();
         }
 
         private void MainWindow1_Closed(object sender, EventArgs e)

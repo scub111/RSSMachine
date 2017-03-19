@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <Image Name="img" Height="612px" Width="612px" VerticalAlignment="Center" 
                HorizontalAlignment="Center" Source="/image/group.png" Stretch="Fill"/>
-        <TextBlock FontFamily="Roboto-Regular" Grid.Row="1"  Width="912px" 
+        <TextBlock x:Name="txtCaption" FontFamily="Roboto-Regular" Grid.Row="1"  Width="912px" 
                    HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" FontSize="100" TextWrapping="Wrap" TextAlignment="Center" Height="411" Text="Ожидайте...">
         </TextBlock>
     </Grid>

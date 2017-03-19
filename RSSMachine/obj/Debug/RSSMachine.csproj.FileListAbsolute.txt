@@ -31,3 +31,5 @@ D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Controls\HMIButton.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Controls\HMIButton.baml
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\WaitView.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\WaitView.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SelectProductView.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SelectProductView.baml

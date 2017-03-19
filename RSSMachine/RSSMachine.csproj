@@ -71,6 +71,9 @@
     <Compile Include="Classes\RssMachineSerialPort.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\SelectProductView.xaml.cs">
+      <DependentUpon>SelectProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WaitView.xaml.cs">
       <DependentUpon>WaitView.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
     <Page Include="Controls\UpdateControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SelectProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WaitView.xaml">
       <SubType>Designer</SubType>

@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RSSMachine
 {
@@ -37,7 +25,6 @@ namespace RSSMachine
         {
         }
 
-
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (Visible)
@@ -49,9 +36,17 @@ namespace RSSMachine
             }
         }
 
-        private void btnBeep_Click(object sender, RoutedEventArgs e)
+        private async void btnBeep_Click(object sender, RoutedEventArgs e)
         {
-            rssController.Beep(1);
+            bool result;
+            try
+            {
+                result = await rssController.Beep(3);
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnGetStatus_Click(object sender, RoutedEventArgs e)
@@ -59,7 +54,7 @@ namespace RSSMachine
             rssController.GetControlStatus();
         }
 
-        private async void btnReconnect_Click(object sender, RoutedEventArgs e)
+        private void btnReconnect_Click(object sender, RoutedEventArgs e)
         {
             /*
             Microsoft.Win32.Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\USBSTOR", "Start", 4, Microsoft.Win32.RegistryValueKind.DWord);

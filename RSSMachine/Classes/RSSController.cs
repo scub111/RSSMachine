@@ -36,6 +36,40 @@ namespace RSSMachine
         public bool btnDeny { get; set; }
     }
 
+    public static class TaskEx
+    {
+        public static async Task<TResult> WithTimeout<TResult>(this Task<TResult> task, TimeSpan timeout)
+        {
+            if (task == await Task.WhenAny(task, Task.Delay(timeout)))
+            {
+                return await task;
+            }
+            throw new TimeoutException();
+        }
+
+        /// <summary>
+        /// Запуск задачи с таймалутом.
+        /// </summary>
+        /// <param name="timeout">Время, за которое она должна выполнится, мс.</param>
+        /// <param name="generateExeption">Генерировать ли исключение, если вышло время</param>
+        /// <param name="exeptionText">Сообщение исключения.</param>
+        public static async Task<bool> WithTimeoutBool(this Task<bool> task, TimeSpan timeout, bool generateExeption = false, string exeptionText = "")
+        {
+            if (task == await Task.WhenAny(task, Task.Delay(timeout)))
+            {
+                return await task;
+            }
+            if (generateExeption)
+                throw new Exception(exeptionText);
+            else
+            {
+                Task<bool> newTask = new Task<bool>(() => false);
+                newTask.Start();
+                return newTask.Result;
+            }
+        }
+    }
+
     public class RSSController
     {
         public RSSController(string portName, bool simulation = false)
@@ -64,10 +98,14 @@ namespace RSSMachine
         /// </summary>
         RssMachineSerialPort port;
 
-        Task loop;
-
+        /// <summary>
+        /// Главный циклический поток передачи данных с контроллером.
+        /// </summary>
         Thread LoopThread;
-
+        
+        /// <summary>
+        /// Имя порта.
+        /// </summary>
         string PortName;
 
         /// <summary>
@@ -113,16 +151,88 @@ namespace RSSMachine
             get { return queueActions.Count; }
         }
 
-        public async void Beep(byte Count = 3)
+        /// <summary>
+        /// Запуск задачи с таймалутом.
+        /// </summary>
+        /// <param name="task">Выполняемая задача.</param>
+        /// <param name="millisecondsTimeout">Время, за которое она должна выполнится, мс.</param>
+        /// <param name="generateExeption">Генерировать ли исключение, если вышло время</param>
+        /// <param name="exeptionText">Сообщение исключения.</param>
+        /// <returns></returns>
+        private Task<bool> StartTaskTimeout(Task<bool> task, int millisecondsTimeout, bool generateExeption = false, string exeptionText = "")
         {
-            //SendCommand(new byte[] { (byte)Address.Control, 0x27, Count });
+            if (task.Status != System.Threading.Tasks.TaskStatus.Running)
+                task.Start();
 
-            lock(queueLock)
-                queueActions.Add(() =>
+            if (task.Wait(millisecondsTimeout))
+                 return task;
+            else
+            {
+                if (generateExeption)
+                    throw new Exception(exeptionText);
+                else
+                {
+                    Task<bool> newTask = new Task<bool>(() => false);
+                    newTask.Start();
+                    return newTask;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Звуковой сигнал.
+        /// </summary>
+        /// <param name="Count">Количество повторов</param>
+        /// <returns></returns>
+        public Task<bool> Beep(byte Count = 3)
+        {
+            Stopwatch stopWath = new Stopwatch();
+            Action action = new Action(() =>
+            {
+                SendCommand(new byte[] { (byte)Address.Control, 0x27, Count });
+                Thread.Sleep(200);
+            });
+
+            lock (queueLock)
+                queueActions.Add(action);
+            
+            Task<bool> task = new Task<bool>(() =>
+            {
+                while (true)
+                {
+                    lock (queueActions)
                     {
-                        SendCommand(new byte[] { (byte)Address.Control, 0x27, Count });
-                        Thread.Sleep(200);
-                    });
+                        if (!queueActions.Contains(action))
+                            return true;
+                    }
+                    Thread.Sleep(100);
+                }
+            });
+            task.Start();
+            return task.WithTimeoutBool(TimeSpan.FromSeconds(5), true, "Beep timeout exeption.");
+        }
+
+        /// <summary>
+        /// Ожидание измений статуса пульта управления.
+        /// </summary>
+        /// <returns></returns>
+        public Task<bool> WaitControlStatusChanged()
+        {
+            TriggerT<bool> trgAllow = new TriggerT<bool>(ControlStatus.btnAllow);
+            TriggerT<bool> trgDeny = new TriggerT<bool>(ControlStatus.btnDeny);
+
+            Task<bool> task = new Task<bool>(() =>
+            {
+                while (true)
+                {
+                    if (trgAllow.Calculate(ControlStatus.btnAllow) ||
+                        trgDeny.Calculate(ControlStatus.btnDeny))
+                        return true;
+
+                    Thread.Sleep(100);
+                }
+            });
+            return task.WithTimeoutBool(TimeSpan.FromSeconds(60), true, "WaitControlStatusChanged exeption");
         }
 
         /// <summary>
@@ -180,7 +290,6 @@ namespace RSSMachine
                 try
                 {
                     ThreadEx.CallTimedOutMethodSync(CycleMethod, 5000);
-                    port.Close();                    
                 }
                 catch
                 {
@@ -198,30 +307,38 @@ namespace RSSMachine
                 if (!port.IsOpen)
                     port.Open();
 
-                //Выполнение задач из очереди.
-                List<Action> finished = new List<Action>();
-                foreach (Action act in queueActions)
+                if (port.IsOpen)
                 {
-                    act();
-                    finished.Add(act);
+                    //Выполнение задач из очереди.
+                    List<Action> finished = new List<Action>();
+                    foreach (Action act in queueActions)
+                    {
+                        act();
+                        finished.Add(act);
+                    }
+                    //Удаление отработанных задач из очереди.
+                    lock (queueLock)
+                    {
+                        foreach (Action act in finished)
+                            queueActions.Remove(act);
+                    }
+
+                    GetControlStatus();
+
+                    port.Close();
+
+                    LoopSuccessCounter++;
                 }
-                //Удаление отработанных задач из очереди.
-                lock (queueLock)
+                else
                 {
-                    foreach (Action act in finished)
-                        queueActions.Remove(act);
+                    LoopFaultCounter++;
+                    Thread.Sleep(1000);
                 }
-
-                GetControlStatus();
-
-                port.Close();
-
-                //Thread.Sleep(2000);
-                LoopSuccessCounter++;
             }
             catch
             {
                 LoopFaultCounter++;
+                Thread.Sleep(1000);
             }
         }
 

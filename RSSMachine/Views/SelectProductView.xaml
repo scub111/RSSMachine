@@ -1,0 +1,259 @@
+﻿<local:ViewBase x:Class="RSSMachine.SelectProductView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RSSMachine"
+             mc:Ignorable="d" 
+             Height="1920" Width="1080" >
+    <Grid Name="grid" Margin="47,99,47,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="520*"/>
+            <RowDefinition Height="520*"/>
+            <RowDefinition Height="520*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="130*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320*"/>
+            <ColumnDefinition Width="320*"/>
+            <ColumnDefinition Width="320*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="0" Grid.Row="0"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="1" Grid.Row="0"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="2" Grid.Row="0"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="0" Grid.Row="1"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="1" Grid.Row="1"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="2" Grid.Row="1"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="0" Grid.Row="2"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="1" Grid.Row="2"/>
+        <Image Source="/image/back_for_smoke.png" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="2" Grid.Row="2"/>
+        <Grid Name="grid2" Grid.ColumnSpan="3" Margin="0,-95,0,0" Height="90" VerticalAlignment="Top" Panel.ZIndex="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TabControl Margin="0,80,0,10"  Name="tb0" Grid.ColumnSpan="3">
+                <TabItem Name="tb1">
+                    <TabItem.Content>
+                        <Grid Name="grid_mark">
+                            <Button Name="btn_back_mark" Margin="0,60,34,-60" Click="btn_back_mark_Click">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/image/back.png" Stretch="Fill" Margin="0,-5,0,0"></Image>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Name="tb2">
+                    <TabItem.Content>
+                        <Grid Name="grid_price">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Name="do_69" Grid.Row="1" Grid.Column="0" Margin="30,25,15,0" Click="do_69_Click" Height="81" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/image/do_69.png" Stretch="Fill"></Image>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Button Name="do_99" Grid.Row="1" Grid.Column="1" Margin="15,25,15,0" Click="do_99_Click" Height="81" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/image/do_99.png" Stretch="Fill" ></Image>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Name="ot_100" Grid.Row="1" Grid.Column="2" Margin="15,25,30,0" Click="ot_100_Click" Height="81" VerticalAlignment="Top">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/image/ot_100.png" Stretch="Fill"></Image>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <TextBlock Grid.Row="0" Text="Выберите диапазон цен" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="30" FontFamily="Roboto-Regular" Grid.ColumnSpan="3"/>
+                            <Button Name="back_price" Grid.Row="2" Grid.Column="1" Height="59" VerticalAlignment="Bottom" Margin="10,0,5,10" Click="back_price_Click">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/image/back.png" Stretch="Fill" Margin="0,-20,0,0"></Image>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Name="tb3">
+                    <Grid Name="grid_form">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Выберите формат сигарет" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Foreground="Gray" FontFamily="Roboto-Regular"></TextBlock>
+                        <Button Name="king_size" Grid.Row="1" Margin="0,0,0,10" Click="king_size_Click">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/image/king_size.png" Stretch="Fill"></Image>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Name="kompakt" Grid.Row="2" Margin="0,0,0,10" Click="kompakt_Click">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/image/kompakt.png" Stretch="Fill"></Image>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Name="king_size_super" Grid.Row="3" Margin="0,0,01,10" Click="king_size_super_Click">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/image/king_size_super.png" Stretch="Fill"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Name="super_slim" Grid.Row="4" Margin="0,0,0,10" Click="super_slim_Click">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/image/super_slim.png" Stretch="Fill"></Image>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Name="other" Grid.Row="5" Margin="0,0,0,10" Click="other_Click">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/image/other.png" Stretch="Fill"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Name="back_form" Grid.Row="5" Margin="77,66,73,9.5"  Click="back_form_Click" Grid.RowSpan="2">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Source="/image/back.png"></Image>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+
+                </TabItem>
+            </TabControl>
+            <Button Name="btn_sort_mark" Grid.Column="0" Grid.Row="0" Click="btn_sort_mark_Click" Margin="4,0,0,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Stretch="Fill" Source="/image/sort_mark_down.png" Name="image_sort_mark"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Margin="4px 0" Name="btn_sort_price" Grid.Column="1" Grid.Row="0" Click="btn_sort_price_Click">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Stretch="Fill" Source="/image/sort_price_down.png" Name="image_sort_price" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Margin="4px 0 0 0" Name="btn_sort_form" Grid.Column="2" Grid.Row="0" Click="btn_sort_form_Click">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Stretch="Fill" Source="/image/sort_form_down.png" Name="image_sort_form" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+        </Grid>
+        <Button Visibility="Hidden" Name="home" Width="146" Height="74" Margin="0,0,180,28" 
+                Grid.Row="5" Click="home_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right"  >
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/image/home.png" Stretch="Fill"></Image>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button  Name="Left_page" Margin="0,0,0,28" Grid.Row="6" Click="Left_page_Click"
+                HorizontalAlignment="Right" Width="146" Height="74" VerticalAlignment="Bottom">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/image/left_page.png" Stretch="Fill"></Image>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock Name="schetchik" Text="1/1000" Foreground="White" FontFamily="Roboto-Light" 
+                   FontSize="20" Grid.Column="1" Grid.Row="6"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Name="Right_page" Grid.Column="2" Width="146" Height="74"  
+                Margin="10,0,0,28" Grid.Row="6" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Left"  Click="right_page_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/image/right_page.png" Stretch="Fill"></Image>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock Grid.ColumnSpan="3" TextAlignment="Center" Text="Представлена продукция производителя"
+                   FontFamily="Roboto-Regular" VerticalAlignment="Bottom" Foreground="Gray" Margin="355,0,355,0" 
+                   Grid.Row="3" />
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="3" Margin="0 10px 0 0" Height="75">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock  TextAlignment="Center"  HorizontalAlignment="Center" 
+                   Name="BAT_txt" Text="Бритиш Американ Тобакко"  MouseDown="BAT_txt_MouseDown"
+                   FontFamily="Roboto-Regular" FontSize="13.5" Foreground="Gray" 
+                   Height="60" VerticalAlignment="Bottom" Margin="17,-1,19,10"/>
+
+            <TextBlock Grid.Column="1" Width="300px" MouseDown="JTI_txt_MouseDown" Name="JTI_txt" 
+                   Text="Джапан Тобакко Интернэшнл" FontFamily="Roboto-Regular" 
+                   FontSize="13.5" Foreground="Gray"  HorizontalAlignment="Center" 
+                   TextAlignment="Center" 
+                   Height="70px" VerticalAlignment="Bottom" />
+
+            <TextBlock  MouseDown="PMI_txt_MouseDown" Name="PMI_txt" Text="Филип Моррис Интернэшнл" 
+                    FontFamily="Roboto-Regular" FontSize="13.5" Foreground="Gray" 
+                    Grid.Column="2" Height="70" 
+                    VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                        Width="310px" TextAlignment="Center"/>
+
+            <TextBlock HorizontalAlignment="Center" Height="70px" Width="240px" MouseDown="other_txt_MouseDown"
+                   Name="other_txt" Text="Прочие" FontFamily="Roboto-Regular" 
+                   FontSize="13.5" Foreground="Gray" Grid.Column="3" 
+                    TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+
+            <Image  Name="BAT" Source="/image/down_line_off.png" Stretch="Fill" Height="6" Margin="2,26,2,0" VerticalAlignment="Top" />
+            <Image Name="JTI" Source="/image/down_line_off.png" Stretch="Fill" RenderTransformOrigin="0.526,2.7"
+               Height="6" Grid.Column="1" Margin="2,26,2,0" VerticalAlignment="Top" />
+            <Image Name="PMI" Source="/image/down_line_off.png" Stretch="Fill" 
+                    Grid.Column="2" Height="6"  Margin="2,26,2,0" VerticalAlignment="Top" 
+                    />
+            <Image Name="other_" Source="/image/down_line_off.png" Stretch="Fill" Height="6" Margin="2,26,2,0" VerticalAlignment="Top" Grid.Column="3"
+                   />
+        </Grid>
+    </Grid>
+</local:ViewBase>
