@@ -28,13 +28,18 @@ namespace RSSMachine
 
             rssController = new RSSController();
 
-            AnalisExcel analisExcel = new AnalisExcel("total table.xlsx");
+            analisExcel = new AnalisExcel("total table.xlsx");
         }
 
         /// <summary>
         /// RSS-контроллер.
         /// </summary>
         RSSController rssController;
+
+        /// <summary>
+        /// Анализ Excel-файла.
+        /// </summary>
+        AnalisExcel analisExcel;
 
         /// <summary>
         /// Реальный порт RSS-контроллера.
@@ -74,9 +79,7 @@ namespace RSSMachine
         /// <summary>
         /// Последний активный вид.
         /// </summary>
-        ViewBase viewLastVisible;
-
-        
+        ViewBase viewLastVisible;        
 
 
         /// <summary>
@@ -188,6 +191,7 @@ namespace RSSMachine
                 (s, a) =>
                 {
                     ((SelectProductView)s).PostConstructor(rssController);
+                    ((SelectProductView)s).SetAnalisExcel(analisExcel);
                 }
             );
         }        
@@ -226,14 +230,6 @@ namespace RSSMachine
             AgreementViewCall();
         }
 
-        /// <summary>
-        /// Ожидание подтверждения от кассира.
-        /// </summary>
-        private async void WaitAnswer()
-        {
-
-        }
-
         private async void AgreementView_ContinueButtonClick(object sender, EventArgs e)
         {
             WaitViewCall();
@@ -245,24 +241,24 @@ namespace RSSMachine
             {
                 await rssController.Beep();
                 await rssController.WaitControlStatusChanged();
+
+                if (rssController.ControlStatus.btnDeny)
+                {
+                    StartViewCall();
+                    await rssController.Beep(1);
+                }
+                else
+                {
+                    if (rssController.ControlStatus.btnAllow)
+                    {
+                        SelectProductViewCall();
+                        await rssController.Beep(1);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 StartViewCall();
-            }
-
-            if (rssController.ControlStatus.btnDeny)
-            {
-                StartViewCall();
-                await rssController.Beep(1);
-            }
-            else
-            {
-                if (rssController.ControlStatus.btnAllow)
-                {
-                    SelectProductViewCall();
-                    await rssController.Beep(1);
-                }
             }
         }
 

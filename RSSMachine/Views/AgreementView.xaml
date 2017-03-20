@@ -8,7 +8,6 @@
              mc:Ignorable="d" 
              Height="1920" Width="1080" 
              Background="#dddddd">
-
     <Grid Name="grid">
         <Grid.Background>
             <ImageBrush ImageSource="/image/back_for_smoke.png"/>

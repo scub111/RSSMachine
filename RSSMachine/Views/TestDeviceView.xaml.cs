@@ -72,22 +72,26 @@ namespace RSSMachine
 
         private void btnAllow_Click(object sender, EventArgs e)
         {
-            rssController.ControlStatusSim.btnAllow = true;
+            if (rssController.ControlStatusSim != null)
+                rssController.ControlStatusSim.btnAllow = true;
         }
 
         private void btnAllow_ClickUp(object sender, EventArgs e)
         {
-            rssController.ControlStatusSim.btnAllow = false;
+            if (rssController.ControlStatusSim != null)
+                rssController.ControlStatusSim.btnAllow = false;
         }
 
         private void btnDeny_Click(object sender, EventArgs e)
         {
-            rssController.ControlStatusSim.btnDeny = true;
+            if (rssController.ControlStatusSim != null)
+                rssController.ControlStatusSim.btnDeny = true;
         }
 
         private void btnDeny_ClickUp(object sender, EventArgs e)
         {
-            rssController.ControlStatusSim.btnDeny = false;
+            if (rssController.ControlStatusSim != null)
+                rssController.ControlStatusSim.btnDeny = false;
         }
     }
 }

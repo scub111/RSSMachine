@@ -1,6 +1,7 @@
 ﻿
 
 FD:\_Projects\RSSMachine\RSSMachine\Controls\HMIButton.xaml;;
+FD:\_Projects\RSSMachine\RSSMachine\Controls\HMIProductSmall.xaml;;
 FD:\_Projects\RSSMachine\RSSMachine\Views\SetControllerView.xaml;;
 FD:\_Projects\RSSMachine\RSSMachine\Views\SelectProductView.xaml;;
 FD:\_Projects\RSSMachine\RSSMachine\Views\WaitView.xaml;;
@@ -10,4 +11,5 @@ FD:\_Projects\RSSMachine\RSSMachine\Views\ExeptionView.xaml;;
 FD:\_Projects\RSSMachine\RSSMachine\Views\AgreementView.xaml;;
 FD:\_Projects\RSSMachine\RSSMachine\Windows\MainWindow.xaml;;
 FD:\_Projects\RSSMachine\RSSMachine\Views\StartView.xaml;;
+FD:\_Projects\RSSMachine\RSSMachine\Views\DistributeProductView.xaml;;
 

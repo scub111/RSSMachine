@@ -143,8 +143,15 @@ namespace RSSMachine
         /// Статус пульта кассира (симуляция).
         /// </summary>
         public ControlStatus ControlStatusSim
-        { get { return port.ControlStatusSim; } }
-            
+        {
+            get
+            {
+                if (port != null)
+                    return port.ControlStatusSim;
+                else
+                    return null;
+            }
+        }            
 
         /// <summary>
         /// Счетчик удачнных запросов.

@@ -1,0 +1,328 @@
+﻿<local:ViewBase x:Class="RSSMachine.DistributeProductView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RSSMachine"
+             mc:Ignorable="d" 
+             Height="1920" Width="1080" 
+             Background="White">
+    <Grid Name="General_grid" >
+        <!--Margin="50,30"-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="575*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="492*"/>
+            <RowDefinition Height="411*"/>
+            <RowDefinition Height="78*"/>
+            <RowDefinition Height="293*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="333*"/>
+            <ColumnDefinition Width="647*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="0" MouseLeftButtonDown="Close_Click" Margin="508,0,0,392" />
+        <Button Name="close" Grid.Row="0" Grid.Column="1" Margin="590,10,10,483" Click="Close_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image MouseLeftButtonDown="Close_Click" Source="/image/close.png" Width="84" Height="76" VerticalAlignment="Top" HorizontalAlignment="Right" Stretch="None" Margin="0" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Image Name="picture1"  Grid.Row="0" Margin="36,119,41,71"/>
+        <TextBlock  Foreground="#999999" Text="Тут имя" FontFamily="Roboto-Medium" 
+                    FontSize="40" FontWeight="Bold" Name="name1" 
+                    Grid.Row="0" Grid.Column="1" 
+                    VerticalAlignment="Top" HorizontalAlignment="Left" 
+                     Margin="10,91,0,0" RenderTransformOrigin="0.227,0.409" Height="48"/>
+        <TextBlock  Foreground="#999999" Text="Тут подымя" FontFamily="Roboto-Medium"  
+                    FontSize="35" FontWeight="ExtraLight" Name="subname1" Grid.Row="0" 
+                    Grid.Column="1" Margin="12,162,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" 
+                     VerticalAlignment="Top" Width="574" Height="42"/>
+        <TextBlock Text="Сигарет в пачке" FontFamily="Roboto-Regular" FontSize="16" 
+                   Grid.Row="0" Grid.Column="1" Margin="22,255,0,0" HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Height="19" Width="118"/>
+        <TextBlock Grid.Row="0" Margin="22,284,0,0" Height="2" Background="#cccccc" Opacity="0.4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="409" Grid.Column="1"/>
+        <TextBlock Grid.Row="0" Margin="22,330,0,0" Background="#cccccc" Opacity="0.4" HorizontalAlignment="Left" Width="409" Height="2" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock Text="Формат"  FontFamily="Roboto-Regular" FontSize="16" Grid.Row="0" 
+                   Grid.Column="1" Margin="22,300,0,0" VerticalAlignment="Top" 
+                   HorizontalAlignment="Left" Height="19" Width="56"/>
+        <TextBlock Text="Смола"  FontFamily="Roboto-Regular" FontSize="16" Grid.Row="0" 
+                   Margin="22,350,0,0" Grid.Column="1"  VerticalAlignment="Top" 
+                   HorizontalAlignment="Left" Height="19" Width="47" />
+        <TextBlock Grid.Row="0" Margin="22,382,0,0" Height="2" Background="#cccccc" Opacity="0.4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="409" Grid.Column="1"/>
+        <TextBlock Name="kol_sig1" Foreground="#999999" Text="кол-сиг" 
+                   FontFamily="Roboto-Regular" FontSize="16" Grid.Row="0" Grid.Column="1" 
+                   Margin="227,255,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19"/>
+        <TextBlock Name="format1" Foreground="#999999" Text="формат" FontFamily="Roboto-Regular"
+                   FontSize="16" Grid.Row="0" Grid.Column="1" Margin="227,300,0,0" 
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" />
+        <TextBlock Name="smola1" Foreground="#999999" Text="смола" FontFamily="Roboto-Regular" 
+                   FontSize="16" Grid.Row="0" Margin="227,350,0,0" Grid.Column="1"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="19"/>
+
+        <TextBlock  Text="Информация для покупателя: схожие* товары в этой категории" 
+                    Foreground="Gray" Grid.Row="1" FontSize="18" TextAlignment="Center" 
+                    Grid.ColumnSpan="2" Margin="82,18,81,0"  VerticalAlignment="Top" Height="24"/>
+
+
+
+        <Image Name="picture2"  Grid.Row="2" Margin="36,13,41,127" />
+        <TextBlock  Foreground="#999999" Text="" FontFamily="Roboto-Medium" 
+                    FontSize="40" FontWeight="Bold" Name="name2" 
+                    Grid.Row="2" Grid.Column="1" 
+                    VerticalAlignment="Top" HorizontalAlignment="Left" 
+                     Margin="12,13,0,0" Height="48" Width="677"/>
+        <Label Grid.Column="1" Grid.Row="2" FontSize="22" HorizontalAlignment="Left" Margin="590,13,0,0" Foreground="#999999" Height="317" VerticalAlignment="Top" Width="22">1</Label>
+        <TextBlock  Foreground="#999999" Text="" FontFamily="Roboto-Medium"  
+                    FontSize="35" FontWeight="ExtraLight" Name="subname2" Grid.Row="2" 
+                    Grid.Column="1" Margin="12,75,0,0" HorizontalAlignment="Left" 
+                     VerticalAlignment="Top" Height="42" Width="677"/>
+        <TextBlock Name="sig_pachka_hidden" Text="Сигарет в пачке" Visibility="{Binding ElementName=take2, Path=Visibility}" FontFamily="Roboto-Regular" FontSize="16" 
+                   Grid.Row="2" Grid.Column="1" Margin="22,168,0,0" HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Height="19"/>
+        <TextBlock Grid.Row="2" Margin="22,198,0,0" Height="2" Visibility="{Binding ElementName=take2, Path=Visibility}" Background="#cccccc" Opacity="0.4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="409" Grid.Column="1"/>
+        <TextBlock Grid.Row="2" Margin="22,244,0,0" Background="#cccccc" Opacity="0.4" Visibility="{Binding ElementName=take2, Path=Visibility}" HorizontalAlignment="Left" Width="409" Height="2" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock Name="format_hidden" Text="Формат" Visibility="{Binding ElementName=take2, Path=Visibility}" FontFamily="Roboto-Regular" FontSize="16" Grid.Row="2" 
+                   Grid.Column="1" Margin="22,214,0,0" VerticalAlignment="Top" 
+                   HorizontalAlignment="Left" Height="19"/>
+        <TextBlock Name="smola_hidden" Text="Смола"  FontFamily="Roboto-Regular" Visibility="{Binding ElementName=take2, Path=Visibility}" FontSize="16" Grid.Row="2" 
+                   Margin="22,264,0,0" Grid.Column="1"  VerticalAlignment="Top" 
+                   HorizontalAlignment="Left" Height="19"/>
+        <TextBlock Grid.Row="2" Margin="22,295,0,0" Height="2" Background="#cccccc"  Visibility="{Binding ElementName=take2, Path=Visibility}"
+                   Opacity="0.4" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                   Width="409" Grid.Column="1"/>
+        <TextBlock Name="kol_sig2" Foreground="#999999" Text="" 
+                   FontFamily="Roboto-Regular" FontSize="16" Grid.Row="2" Grid.Column="1" 
+                   Margin="227,168,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="359"/>
+        <TextBlock Name="format2" Foreground="#999999" Text="" FontFamily="Roboto-Regular"
+                   FontSize="16" Grid.Row="2" Grid.Column="1" Margin="227,214,0,0" 
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Width="336" />
+        <TextBlock Name="smola2" Foreground="#999999" Text="" FontFamily="Roboto-Regular" 
+                   FontSize="16" Grid.Row="2" Margin="227,264,0,0" Grid.Column="1"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="31" Width="271"/>
+
+
+        <TextBlock Name="price2" Text="" Grid.Row="2" Grid.Column="1" 
+                   Margin="188,381,0,0" FontFamily="Roboto-Regular" FontSize="60" Foreground="#4A9B1E" HorizontalAlignment="Left" Width="145" Height="62" VerticalAlignment="Top"/>
+        <TextBox Name="txtb_1" IsEnabled="False" SelectionChanged="txtb_1_SelectionChanged" Background="Transparent" Grid.Row="0" Grid.Column="1" IsReadOnly="True" Text="1" Margin="60,473,0,0" FontFamily="Roboto-Regular" Foreground="Gray" FontSize="18pt" TextAlignment="Center" VerticalContentAlignment="Center" Height="62" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67"/>
+        <TextBlock Name="Itog" Foreground="#4A4A4A" Visibility="Hidden" FontSize="12pt" FontFamily="Roboto-Regular" Grid.Row="0" Grid.Column="1" Margin="60,540,0,0" Text="Итого: 0 руб." HorizontalAlignment="Left" Width="145" Height="62" VerticalAlignment="Top" Grid.RowSpan="2"/>
+
+
+        <TextBlock Name="plus_1" Grid.Column="1" Grid.Row="0" Text="+" TextAlignment="Center" FontFamily="Roboto-Regular" FontSize="50" Foreground="#9B9B9B" Margin="132,473,0,0" Height="67" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51" IsEnabled="{Binding ElementName=take1, Path=IsEnabled}" MouseLeftButtonDown="plus_1_Click"/>
+
+        <TextBlock Name="minus_1" Grid.Column="1" Grid.Row="0" Text="-" TextAlignment="Center"  FontFamily="Roboto-Regular" FontSize="80" Foreground="#9B9B9B" Margin="0,456,648,0"  VerticalAlignment="Top" HorizontalAlignment="Right"  IsEnabled="{Binding ElementName=take1, Path=IsEnabled}" MouseLeftButtonDown="minus_1_Click" Width="60" Height="94"/>
+
+        <TextBlock Name="price1" Text="110 ₽" Grid.Row="0" Grid.Column="1" Margin="188,466,0,0" FontFamily="Roboto-Regular" FontSize="60" Foreground="#6556B1" RenderTransformOrigin="0.492,-0.032" Height="62" VerticalAlignment="Top" HorizontalAlignment="Left" Width="175"/>
+        <Button Name="take1" Grid.Row="0" Grid.Column="1" Margin="376,473,0,0" HorizontalAlignment="Left" Width="236" Height="62" VerticalAlignment="Top">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Name="take_pach" Source="/image/take_pachka_blue.png" Stretch="Fill"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <TextBox Name="txtb_2" Visibility="{Binding ElementName=take2, Path=Visibility}" IsEnabled="False" Background="Transparent" Grid.Row="2" Grid.Column="1" IsReadOnly="True" Text="1" Margin="60,381,0,0" FontFamily="Roboto-Regular" Foreground="Gray" FontSize="18pt" TextAlignment="Center" VerticalContentAlignment="Center" Height="62" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67"/>
+        <TextBlock Name="Itog2" Foreground="#4A4A4A" Visibility="Hidden" FontSize="12pt" FontFamily="Roboto-Regular" Grid.Row="2" Grid.Column="1" Margin="60,448,0,0" Text="Итого: 0 руб." HorizontalAlignment="Left" Width="145" Height="62" VerticalAlignment="Top" Grid.RowSpan="2"/>
+
+        <!--<Button Name="plus_2" Grid.Column="1" Grid.Row="2" Margin="143,393,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" IsEnabled="{Binding ElementName=take2, Path=IsEnabled}" Click="plus_2_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="image/plus.png" Stretch="Fill"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>-->
+        <TextBlock Visibility="{Binding ElementName=take2, Path=Visibility}" Name="plus_2" Grid.Column="1" Grid.Row="2" Text="+" TextAlignment="Center" FontFamily="Roboto-Regular" FontSize="50" Foreground="#9B9B9B" Margin="137,380,0,0" Height="67" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51" IsEnabled="{Binding ElementName=take1, Path=IsEnabled}" MouseLeftButtonDown="plus_2_Click"/>
+
+        <!--<Button Name="minus_2" Grid.Column="1" Grid.Row="2" Margin="15,393,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" IsEnabled="{Binding ElementName=take2, Path=IsEnabled}" Click="minus_2_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="image/minus.png" Stretch="Fill"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>-->
+
+        <TextBlock Name="minus_2" Visibility="{Binding ElementName=take2, Path=Visibility}" Grid.Column="1" Grid.Row="2" Text="-" TextAlignment="Center" FontFamily="Roboto-Regular" FontSize="80" Foreground="#9B9B9B" Margin="0,361,0,0" Height="88" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60" IsEnabled="{Binding ElementName=take1, Path=IsEnabled}" MouseLeftButtonDown="minus_2_Click"/>
+
+
+        <Button Name="take2"  Grid.Row="2" Grid.Column="1" Margin="376,393,0,0" HorizontalAlignment="Left" Width="236" Height="50" VerticalAlignment="Top">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Name="take_pach" Source="/image/take_pachka_green.png" Stretch="Fill"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock Text="Бритиш Американ Тобакко" Margin="20,0,0,341" FontFamily="Roboto-Regular" FontSize="20pt" Grid.Column="0" Grid.Row="3" VerticalAlignment="Bottom"/>
+        <Grid Name="grid" Grid.ColumnSpan="2" Margin="0,80,1,35" Grid.Row="3" Grid.RowSpan="2"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="txtb1Click" Panel.ZIndex="1" Grid.Column="0" Margin="1,0,0,0"/>
+            <TextBlock Margin="0,0,1,0" Background="#f0f0f0" />
+            <TextBlock Name="txtb2Click" Panel.ZIndex="1" Grid.Column="1" Margin="1,0,0,0"/>
+            <TextBlock Grid.Column="1" Margin="1,0,0,0"  Background="#f0f0f0"/>
+            <TextBlock Name="txtb3Click" Panel.ZIndex="1" Grid.Column="2" Margin="1,0,0,0"/>
+            <TextBlock Grid.Column="2" Margin="1,0"   Background="#f0f0f0"/>
+            <TextBlock Name="txtb4Click" Panel.ZIndex="1" Grid.Column="3" Margin="1,0,0,0"/>
+            <TextBlock Grid.Column="3" Margin="1,0"  Background="#f0f0f0"/>
+            <Image Name="down_picture1" Stretch="Fill"
+                   Grid.Column="0" Margin="70,100,70,85" />
+            <Image Name="down_picture2" Stretch="Fill" Grid.Column="1" Margin="70,100,70,85"/>
+            <Image Name="down_picture3" Stretch="Fill" Grid.Column="2" Margin="70,100,70,85"/>
+            <Image Name="down_picture4" Stretch="Fill" Grid.Column="3"  Margin="70,100,70,85"/>
+            <TextBlock   Name="down_name1" Text="" FontSize="22" FontFamily="Roboto-Medium" 
+                         FontWeight="Bold" Margin="25,37,0,0" Grid.Column="0" 
+                         VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Grid.Column="0" FontSize="16" HorizontalAlignment="Right" Margin="0,8,30,0" 
+                   Foreground="#999999" VerticalAlignment="Top">2</Label>
+            <TextBlock  TextWrapping="Wrap" Name="down_subname1" Text="" FontSize="16" FontFamily="Roboto-Medium" 
+                       FontWeight="ExtraLight" Margin="25,65,0,0" Grid.Column="0"
+                       VerticalAlignment="Top" />
+
+            <TextBlock Name="down_name2" Text="" FontSize="22" FontFamily="Roboto-Medium"
+                       FontWeight="Bold" Margin="25,37,0,0" Grid.Column="1" 
+                       VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <Label Grid.Column="1" FontSize="16" HorizontalAlignment="Right" Margin="0,8,30,0" 
+                   Foreground="#999999">3</Label>
+            <TextBlock TextWrapping="Wrap" Name="down_subname2" Text="" FontSize="16" FontFamily="Roboto-Medium" 
+                       FontWeight="ExtraLight" Margin="25,65,0,0" Grid.Column="1" 
+                       VerticalAlignment="Top" LineHeight="10"/>
+
+            <TextBlock Name="down_name3" Text="" FontSize="22" FontFamily="Roboto-Medium" 
+                       FontWeight="Bold" Grid.Column="2" VerticalAlignment="Top"
+                        Margin="25,37,0,0"/>
+            <Label Grid.Column="2" FontSize="16" HorizontalAlignment="Right" Margin="0,8,30,0"  Foreground="#999999" Content="4" Height="330" VerticalAlignment="Top"/>
+            <TextBlock  TextWrapping="Wrap" Name="down_subname3" Text="" FontSize="16" FontFamily="Roboto-Medium" 
+                       FontWeight="ExtraLight"  Margin="25,65,0,0" Grid.Column="2" 
+                       VerticalAlignment="Top" />
+
+            <TextBlock Name="down_name4" Text="" FontSize="22" FontFamily="Roboto-Medium" 
+                       FontWeight="Bold"  Margin="25,37,0,0" Grid.Column="3" 
+                       VerticalAlignment="Top"/>
+            <Label Grid.Column="3" FontSize="16" HorizontalAlignment="Right" Margin="0,8,30,0"  Foreground="#999999" Content="5"/>
+            <TextBlock  TextWrapping="Wrap" Name="down_subname4" Text="" FontSize="16" FontFamily="Roboto-Medium" 
+                       FontWeight="ExtraLight"  Margin="25,65,0,0" Grid.Column="3" 
+                       VerticalAlignment="Top" />
+
+            <Button Name="down_btn1" Visibility="{Binding ElementName=take2, Path=Visibility}"
+                    Grid.Column="0" Margin="0,0,1,7"  Width="171" Height="57" VerticalAlignment="Bottom"  >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Name="down_price1" Source="/image/button_smoke.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Name="down_btn2" Visibility="{Binding ElementName=take2, Path=Visibility}" Margin="1,0,0,7" Width="171"  Height="57" VerticalAlignment="Bottom" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Name="down_price2" Source="/image/button_smoke.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Name="down_btn3" Visibility="{Binding ElementName=take2, Path=Visibility}" Grid.Column="2" Width="171"  Margin="0,0,1,7" Height="57" VerticalAlignment="Bottom">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Name="down_price3" Source="/image/button_smoke.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Name="down_btn4" Visibility="{Binding ElementName=take2, Path=Visibility}" Grid.Column="3"  Width="171" Margin="1,0,1,7" Height="57" 
+                    VerticalAlignment="Bottom">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Name="down_price4" Source="/image/button_smoke.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+        <Button Visibility="Hidden" Name="find_other_param"  Grid.ColumnSpan="2" 
+                Grid.Row="4" Click="find_other_param_Click" Margin="210,0,210,8" Height="69" VerticalAlignment="Bottom">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/image/find_other_param.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock FontSize="10" FontFamily="ArialMT" TextAlignment="Center" TextWrapping="Wrap"
+                   Grid.ColumnSpan="2"  Grid.Row="5" Margin="0,25,0,167">* Информация предоставлена в целях исполнения обязанностей Продавца, предусмотренных ч. 1 ст. 10 Закона «О защите прав потребителей» от 07.02.1992 г. №2300-1. Схожесть товаров определяется исходя из ранее сделанного совершеннолетним покупателем выбора табачной продукции на основании следующих критериев: ценовой сегмент<Run Typography.Variants="Superscript">1</Run> табачной продукции | формат табачной продукции<Run Typography.Variants="Superscript">1</Run> | рыночная доля<Run Typography.Variants="Superscript">2</Run> табачной продукции в выбранном совершеннолетним покупателем сегменте и формате табачной продукции. Информация о товарах размещена для удобства покупателей  по «Компаниям-производителям».<LineBreak/><LineBreak/><Run Typography.Variants="Superscript">1</Run> - Определяется в соответствии с результатами исследования TNS Track за Q4 2015 г. <Run Typography.Variants="Superscript">2</Run> - На основании данных исследования «Нильсен» за декабрь 2015 г.</TextBlock>
+
+        <Grid Name="down_navigaton" Grid.Row="5" Grid.ColumnSpan="2" Margin="0,100,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135*"/>
+                <ColumnDefinition Width="401*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/image/down_gradient.png"/>
+            </Grid.Background>
+            <TextBlock Text="Представлена продукция производителя" HorizontalAlignment="Center" Margin="115,20,384,126" FontFamily="Roboto-Regular" FontSize="12pt" Grid.Column="1"/>
+            <Grid Margin="0,56,0,77" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  TextAlignment="Center"  HorizontalAlignment="Center" 
+                   Name="BAT_txt" Text="Бритиш Американ Тобакко" 
+                   FontFamily="Roboto-Regular" FontSize="13.5" Foreground="Gray" 
+                   Height="60" VerticalAlignment="Top" Margin="49,4,51,0"/>
+
+                <TextBlock Width="300px" Name="JTI_txt" 
+                   Text="Джапан Тобакко Интернэшнл" FontFamily="Roboto-Regular" 
+                   FontSize="13.5" Foreground="Gray"  HorizontalAlignment="Center" 
+                   TextAlignment="Center" 
+                   Height="70px" VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="252,4,252,0" />
+
+                <TextBlock  Name="PMI_txt" Text="Филип Моррис Интернэшнл" 
+                    FontFamily="Roboto-Regular" FontSize="13.5" Foreground="Gray" 
+                    Grid.Column="1" Height="22" 
+                    VerticalAlignment="Top" HorizontalAlignment="Center"
+                        Width="310px" TextAlignment="Center" Grid.ColumnSpan="3" Margin="247,4,247,0"/>
+
+                <TextBlock HorizontalAlignment="Center" Height="70px" Width="240px"
+                   Name="other_txt" Text="Прочие" FontFamily="Roboto-Regular" 
+                   FontSize="13.5" Foreground="Gray" Grid.Column="3" 
+                    TextAlignment="Center" VerticalAlignment="Top" Margin="14,4,14,0"/>
+
+
+                <Image  Name="BAT" Source="/image/down_line_on.png" Stretch="Fill" Height="6" Margin="2,26,2,0" VerticalAlignment="Top"  Panel.ZIndex="0"/>
+                <Image Name="JTI" Source="/image/down_line_gray.png" Stretch="Fill" RenderTransformOrigin="0.526,2.7"
+               Height="6" Grid.Column="1" Margin="2,26,2,0" VerticalAlignment="Top" />
+                <Image Name="PMI" Source="/image/down_line_gray.png" Stretch="Fill" 
+                    Grid.Column="2" Height="6"  Margin="2,26,2,0" VerticalAlignment="Top" 
+                    />
+                <Image Name="other_" Source="/image/down_line_gray.png" Stretch="Fill" Height="6" Margin="2,26,2,0" VerticalAlignment="Top" Grid.Column="3"
+                   />
+            </Grid>
+            <Button Name="Home" Grid.Row="0" Grid.Column="0" Margin="10,116,120,10" Click="Home_Click">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/image/down_home.png" Stretch="Fill" VerticalAlignment="Bottom"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="Left" Grid.Row="0" Margin="230,116,702,10" Grid.ColumnSpan="2" Panel.ZIndex="0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/image/down_left.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock Name="Page" Text="1 / 2" FontFamily="Roboto-Regular" FontSize="30pt" Grid.Row="0" Foreground="#9b9b9b" Margin="240,117,477,10" Grid.Column="1"/>
+            <Button Name="Right" Panel.ZIndex="0" Grid.Row="0" Grid.Column="1" Margin="435,116,227,10" Click="Right_Click">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/image/down_right.png" Stretch="Fill" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Grid>
+</local:ViewBase>

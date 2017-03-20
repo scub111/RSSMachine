@@ -22,28 +22,13 @@
                 </VisualStateGroup.Transitions>
                 <VisualState x:Name="ControlMouseEnter">
                     <Storyboard>
-                        <DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
+                        <DoubleAnimation Duration="0" To="4" Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
                         <ColorAnimation Duration="0" To="Blue" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
                     </Storyboard>
                 </VisualState>
                 <VisualState x:Name="ControlMouseLeave"/>
             </VisualStateGroup>
-            <VisualStateGroup x:Name="ValueStateGroup">
-                <VisualState x:Name="ControlValueON">
-                    <Storyboard>
-                        <ColorAnimation Duration="0" To="Black" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtCaption" d:IsOptimized="True"/>
-                        <ColorAnimation Duration="0" To="#FFA2A2A2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
-                    </Storyboard>
-                </VisualState>
-                <VisualState x:Name="ControlValueOFF">
-                    <Storyboard>
-                        <ColorAnimation Duration="0" To="Black" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtCaption" d:IsOptimized="True"/>
-                        <ColorAnimation Duration="0" To="#FFA2A2A2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
-                    </Storyboard>
-                </VisualState>
-                <VisualState x:Name="ControlValueUnknown">
-                </VisualState>
-            </VisualStateGroup>
+            <VisualStateGroup x:Name="ValueStateGroup"/>
             <VisualStateGroup x:Name="ActualStateGroup">
                 <VisualState x:Name="ControlActualTrue">
                     <Storyboard>
@@ -69,7 +54,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Rectangle x:Name="recMouse" RadiusY="10" RadiusX="10" Stroke="Black" >
+        <Rectangle x:Name="recMouse" RadiusY="10" RadiusX="10" Stroke="Black">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" >
                     <GradientStop Color="#FFFFFFFE" Offset="0"/>

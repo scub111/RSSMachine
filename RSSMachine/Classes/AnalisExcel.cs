@@ -200,7 +200,7 @@ namespace RSSMachine
         /// <summary>
         /// Коллекция продуктов.
         /// </summary>
-        private Collection<Product> products;
+        public Collection<Product> products;
 
     }
 }

@@ -76,6 +76,12 @@
     <Compile Include="Classes\RssMachineSerialPort.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\HMIProductSmall.xaml.cs">
+      <DependentUpon>HMIProductSmall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DistributeProductView.xaml.cs">
+      <DependentUpon>DistributeProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SetControllerView.xaml.cs">
       <DependentUpon>SetControllerView.xaml</DependentUpon>
     </Compile>
@@ -107,6 +113,14 @@
     <Page Include="Controls\UpdateControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\HMIProductSmall.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DistributeProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SetControllerView.xaml">
       <SubType>Designer</SubType>
@@ -255,6 +269,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\EPPlus.dll" />
+    <Resource Include="image\733.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
