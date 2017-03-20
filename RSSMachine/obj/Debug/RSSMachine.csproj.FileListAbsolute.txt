@@ -35,3 +35,5 @@ D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SelectProductView.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SelectProductView.baml
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SetControllerView.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SetControllerView.baml
+D:\_Projects\RSSMachine\RSSMachine\bin\Debug\EPPlus.dll
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\RSSMachine_Content.g.cs

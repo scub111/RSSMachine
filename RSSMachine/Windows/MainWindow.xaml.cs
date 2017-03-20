@@ -27,6 +27,8 @@ namespace RSSMachine
             InitializeComponent();
 
             rssController = new RSSController();
+
+            AnalisExcel analisExcel = new AnalisExcel("total table.xlsx");
         }
 
         /// <summary>
@@ -73,6 +75,9 @@ namespace RSSMachine
         /// Последний активный вид.
         /// </summary>
         ViewBase viewLastVisible;
+
+        
+
 
         /// <summary>
         /// Активизации определенного вида.

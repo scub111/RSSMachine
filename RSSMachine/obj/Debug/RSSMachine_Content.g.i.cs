@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/actions-speaker-icon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/epplus.dll")]
 
 
