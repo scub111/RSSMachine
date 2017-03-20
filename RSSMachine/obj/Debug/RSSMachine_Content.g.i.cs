@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/back_for_smoke.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/actions-speaker-icon.png")]
 
 

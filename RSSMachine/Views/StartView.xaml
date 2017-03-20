@@ -11,14 +11,14 @@
     <Grid x:Name="myGrid" Height="1920" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1145*"/>
-            <RowDefinition Height="311*"/>
-            <RowDefinition Height="464*"/>
+            <RowDefinition Height="198*"/>
+            <RowDefinition Height="577*"/>
         </Grid.RowDefinitions>
         <MediaElement x:Name="GIF" MediaEnded="GIF_MediaEnded" LoadedBehavior="Manual" UnloadedBehavior="Manual" Grid.Row="0" Margin="201,74,171,0" MediaOpened="GIF_MediaOpened"/>
-        <Label Grid.Row="1" Foreground="#003399" FontWeight="Bold" FontSize="190" Margin="225,100,224,0" Content="ТАБАК" />
+        <Label Foreground="#003399" FontWeight="Bold" FontSize="190" Margin="246,1095,203,10" Content="ТАБАК" Grid.RowSpan="2" />
         <local:UpdateControl x:Name="updGIF" HorizontalAlignment="Left" Margin="405,450,0,0" VerticalAlignment="Top" Height="319" Width="293"/>
         <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Margin="10,331,0,0" Grid.Row="2" VerticalAlignment="Top" Width="272" Height="123" FontSize="72" Click="btnStart_Click"/>
         <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="287,331,0,0" Grid.Row="2" VerticalAlignment="Top" Width="272" Height="123" FontSize="72" Click="btnStop_Click"/>
-        <local:HMIButton HorizontalAlignment="Left" Margin="246,80,0,0" Grid.Row="2" VerticalAlignment="Top" Height="92" Width="594" RectangleRadius="30" CaptionFontSize="50" Text="Нажмите для выбора" Click="HMIButton_Click" Actual="True"/>
+        <local:HMIButton HorizontalAlignment="Left" Margin="246,48,0,0" Grid.Row="2" VerticalAlignment="Top" Height="92" Width="594" RectangleRadius="30" CaptionFontSize="50" Text="Нажмите для выбора" Click="HMIButton_Click" Actual="True"/>
     </Grid>
 </local:ViewBase>

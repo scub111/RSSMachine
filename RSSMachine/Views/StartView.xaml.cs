@@ -16,7 +16,7 @@ namespace RSSMachine
         /// <summary>
         /// Собыитие на нажатие центрально кнопки.
         /// </summary>
-        public event EventHandler PressButtonClicked = delegate {};
+        public event EventHandler PressButtonClick = delegate {};
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -68,7 +68,7 @@ namespace RSSMachine
 
         private void HMIButton_Click(object sender, EventArgs e)
         {
-            PressButtonClicked(this, EventArgs.Empty);
+            PressButtonClick(this, EventArgs.Empty);
         }
     }
 }

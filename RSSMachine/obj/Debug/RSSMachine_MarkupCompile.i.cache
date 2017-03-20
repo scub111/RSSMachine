@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\_Projects\RSSMachine\RSSMachine\App.xaml
-10553084811
+111607365381
 
-23232043607
+24-1379156433
 15-1289323445
-Controls\HMIButton.xaml;Controls\UpdateControl.xaml;Views\SelectProductView.xaml;Views\WaitView.xaml;Windows\InfoWindow.xaml;Views\TestDeviceView.xaml;Views\ExeptionView.xaml;Views\AgreementView.xaml;Windows\MainWindow.xaml;Views\StartView.xaml;
+Controls\HMIButton.xaml;Controls\UpdateControl.xaml;Views\SetControllerView.xaml;Views\SelectProductView.xaml;Views\WaitView.xaml;Windows\InfoWindow.xaml;Views\TestDeviceView.xaml;Views\ExeptionView.xaml;Views\AgreementView.xaml;Windows\MainWindow.xaml;Views\StartView.xaml;
 
-False
+True
 

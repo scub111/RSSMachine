@@ -14,18 +14,18 @@
             <ImageBrush ImageSource="/image/back_for_smoke.png"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1005px"/>
-            <RowDefinition Height="380px"/>
+            <RowDefinition Height="968"/>
+            <RowDefinition Height="384"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Image Name="img" Height="612px" Width="612px" VerticalAlignment="Center" 
-               HorizontalAlignment="Center"  Source="/image/eighteen.png" Stretch="Fill"/>
+               HorizontalAlignment="Center"  Source="/image/eighteen.png" Stretch="Fill" Margin="234,177,234,179"/>
         <TextBlock TextWrapping="Wrap" Text='Нажимая "Продолжить", вы подтверждаете,
             что ознакомились с перечнем табачной продукции,
             размещённом на оборудовании, а также своё
             совершеннолетие и намерение приобрести
-            табачную продукцию.' FontFamily="Roboto-Regular" Name="Block" FontSize="37px" Grid.Row="1" Margin="85px 0" Width="912px" 
-                   HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" TextAlignment="Center" LineHeight="58">
+            табачную продукцию.' FontFamily="Roboto-Regular" Name="Block" FontSize="37px" Grid.Row="1" Margin="84,0" Width="912px" 
+                   HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" TextAlignment="Center" LineHeight="58" Height="290">
         </TextBlock>
         <local:HMIButton x:Name="btnContinue" HorizontalAlignment="Left" Margin="354,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="104" Width="370" CaptionFontSize="50" Text="Продолжить" RectangleRadius="30" Color="#FF56FF07" Click="btnContinue_Click"/>
     </Grid>

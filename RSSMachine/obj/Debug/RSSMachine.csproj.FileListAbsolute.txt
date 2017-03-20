@@ -33,3 +33,5 @@ D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\WaitView.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\WaitView.baml
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SelectProductView.g.cs
 D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SelectProductView.baml
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SetControllerView.g.cs
+D:\_Projects\RSSMachine\RSSMachine\obj\Debug\Views\SetControllerView.baml

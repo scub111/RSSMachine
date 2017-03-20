@@ -1,0 +1,16 @@
+﻿<local:ViewBase x:Class="RSSMachine.SetControllerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RSSMachine"
+             mc:Ignorable="d" 
+             Height="1920" Width="1080" 
+             Background="#dddddd">
+    <Grid>
+        <local:HMIButton x:Name="btnRealRSS" HorizontalAlignment="Left" Margin="264,873,0,0" VerticalAlignment="Top" Height="92" Width="594" RectangleRadius="30" CaptionFontSize="50" Text="Поиск..." Click="btnRealRSS_Click" Actual="True" Color="#FF895CFF"/>
+        <local:HMIButton x:Name="btnSimRSS" HorizontalAlignment="Left" Margin="264,1038,0,0" VerticalAlignment="Top" Height="92" Width="594" RectangleRadius="30" CaptionFontSize="50" Text="Симуляция" Click="btnSimRSS_Click" Actual="True" Color="#FF97FF5C"/>
+        <local:UpdateControl x:Name="updRealRSS" HorizontalAlignment="Left" Margin="328,882,0,0" VerticalAlignment="Top" Height="74" Width="93"/>
+        <TextBlock x:Name="txtCaption" TextWrapping="Wrap" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="Выбор устройства" Margin="264,706,222,1117" Height="97" Width="594" TextAlignment="Center"/>
+    </Grid>
+</local:ViewBase>

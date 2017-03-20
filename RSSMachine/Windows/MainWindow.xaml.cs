@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,13 +26,18 @@ namespace RSSMachine
         {
             InitializeComponent();
 
-            rssController = new RSSController("COM7", true);
+            rssController = new RSSController();
         }
 
         /// <summary>
         /// RSS-контроллер.
         /// </summary>
         RSSController rssController;
+
+        /// <summary>
+        /// Реальный порт RSS-контроллера.
+        /// </summary>
+        string realPortName;
 
         /// <summary>
         /// Стартовый вид.
@@ -54,9 +60,14 @@ namespace RSSMachine
         WaitView waitView;
 
         /// <summary>
-        /// Вид окна выбора товара.
+        /// Вид выбора товара.
         /// </summary>
         SelectProductView selectProductView;
+
+        /// <summary>
+        /// Вид выбора устройства.
+        /// </summary>
+        SetControllerView setControllerView;
 
         /// <summary>
         /// Последний активный вид.
@@ -88,30 +99,49 @@ namespace RSSMachine
             return (T)view;
         }
 
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Title += $" {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
 
-            StartViewCall();
+            SetControllerViewCall();
+            //StartViewCall();
 
             InfoWindow info = new InfoWindow(typeof(TestDeviceView));
+            info.Title = "RSS-контроллер";
             info.Initializing += (s, a) =>
             {
                 ((TestDeviceView)s).PostConstructor(rssController);
             };
             info.Show();
+            realPortName = await FindPortName();
+
+            if (!string.IsNullOrEmpty(realPortName))
+                setControllerView.SetRealRSSCaption(realPortName);
+            else
+                setControllerView.SetRealRSSCaption("Не найдено устройство");
+
+            setControllerView.HideUpdateRealRSS();
+        }
+
+        private Task<string> FindPortName()
+        {
+            Task<string> task = new Task<string>(() => 
+                {
+                    //return "";
+                    return RSSController.FindPortName();
+                });
+            task.Start();
+            return task;
         }
 
         #region Call views
-
         private void StartViewCall()
         {
             startView = ActivateView<StartView>(startView,
                 (s, a) =>
                 {
                     ((StartView)s).PostConstructor(rssController);
-                    ((StartView)s).PressButtonClicked += StartView_PressButtonClicked;
+                    ((StartView)s).PressButtonClick += StartView_PressButtonClick;
                 }
             );
         }
@@ -122,7 +152,7 @@ namespace RSSMachine
                 (s, a) =>
                 {
                     ((AgreementView)s).PostConstructor(rssController);
-                    ((AgreementView)s).ContinueButtonClicked += AgreementView_ContinueButtonClicked;
+                    ((AgreementView)s).ContinueButtonClick += AgreementView_ContinueButtonClick;
                 }
             );
         }
@@ -156,10 +186,37 @@ namespace RSSMachine
                 }
             );
         }        
-        
+        private void SetControllerViewCall()
+        {
+            setControllerView = ActivateView<SetControllerView>(setControllerView,
+                (s, a) =>
+                {
+                    ((SetControllerView)s).PostConstructor(rssController);
+                    ((SetControllerView)s).RealRSSClick += MainWindow_RealRSSClick;
+                    ((SetControllerView)s).SimRSSClick += MainWindow_SimRSSClick;
+                }
+            );
+        }
         #endregion
+        
+        private void MainWindow_RealRSSClick(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(realPortName))
+            {
+                rssController.PostContructor(realPortName);
+                rssController.Start();
+                StartViewCall();
+            }
+        }
 
-        private void StartView_PressButtonClicked(object sender, EventArgs e)
+        private void MainWindow_SimRSSClick(object sender, EventArgs e)
+        {
+            rssController.PostContructor(simulation: true);
+            rssController.Start();
+            StartViewCall();
+        }
+
+        private void StartView_PressButtonClick(object sender, EventArgs e)
         {
             AgreementViewCall();
         }
@@ -169,6 +226,16 @@ namespace RSSMachine
         /// </summary>
         private async void WaitAnswer()
         {
+
+        }
+
+        private async void AgreementView_ContinueButtonClick(object sender, EventArgs e)
+        {
+            WaitViewCall();
+
+            //Task taskWait = new Task(WaitAnswer);
+            //taskWait.Start();
+
             try
             {
                 await rssController.Beep();
@@ -176,24 +243,22 @@ namespace RSSMachine
             }
             catch (Exception ex)
             {
-
+                StartViewCall();
             }
 
             if (rssController.ControlStatus.btnDeny)
-                this.Dispatcher.Invoke(StartViewCall);
+            {
+                StartViewCall();
+                await rssController.Beep(1);
+            }
             else
             {
                 if (rssController.ControlStatus.btnAllow)
-                    this.Dispatcher.Invoke(SelectProductViewCall);
+                {
+                    SelectProductViewCall();
+                    await rssController.Beep(1);
+                }
             }
-        }
-
-        private void AgreementView_ContinueButtonClicked(object sender, EventArgs e)
-        {
-            WaitViewCall();
-
-            Task taskWait = new Task(WaitAnswer);
-            taskWait.Start();
         }
 
         private void MainWindow1_Closed(object sender, EventArgs e)

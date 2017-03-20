@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace RSSMachine
 {
@@ -16,8 +17,10 @@ namespace RSSMachine
             timer.Interval = 100;
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
+            normalColor = btnAllow.Color;
         }
 
+        Color normalColor;
 
         Timer timer;
 
@@ -29,23 +32,12 @@ namespace RSSMachine
         {
             if (Visible)
             {
-                lblLoopCount.Content = $"{rssController.LoopSuccessCounter} / {rssController.LoopFaultCounter}";
-                lblControlStatus.Content = $"{rssController.ControlStatus.btnAllow} {rssController.ControlStatus.btnDeny}";
-                lblCycleSpan.Content = $"{rssController.CycleSpan.TotalMilliseconds:0} ms";
-                lblQueueCount.Content = $"{rssController.QueueCount}";
-            }
-        }
+                lblLoopCount.Content = $"Удачи/неудачи: {rssController.LoopSuccessCounter} / {rssController.LoopFaultCounter}";
+                lblCycleSpan.Content = $"Время цикла: {rssController.CycleSpan.TotalMilliseconds:0} ms";
+                lblQueueCount.Content = $"Кол-во задач: {rssController.QueueCount}";
 
-        private async void btnBeep_Click(object sender, RoutedEventArgs e)
-        {
-            bool result;
-            try
-            {
-                result = await rssController.Beep(3);
-            }
-            catch
-            {
-
+                btnAllow.Color = rssController.ControlStatus.btnAllow ? Color.FromRgb(0x33, 0xFF, 0x00) : normalColor;
+                btnDeny.Color = rssController.ControlStatus.btnDeny ? Color.FromRgb(0xFF, 0x00, 0x66) : normalColor;
             }
         }
 
@@ -63,6 +55,39 @@ namespace RSSMachine
             */
 
             rssController.ReloadLoop();
+        }
+
+        private async void btnBeep_Click(object sender, EventArgs e)
+        {
+            bool result;
+            try
+            {
+                result = await rssController.Beep(3);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnAllow_Click(object sender, EventArgs e)
+        {
+            rssController.ControlStatusSim.btnAllow = true;
+        }
+
+        private void btnAllow_ClickUp(object sender, EventArgs e)
+        {
+            rssController.ControlStatusSim.btnAllow = false;
+        }
+
+        private void btnDeny_Click(object sender, EventArgs e)
+        {
+            rssController.ControlStatusSim.btnDeny = true;
+        }
+
+        private void btnDeny_ClickUp(object sender, EventArgs e)
+        {
+            rssController.ControlStatusSim.btnDeny = false;
         }
     }
 }

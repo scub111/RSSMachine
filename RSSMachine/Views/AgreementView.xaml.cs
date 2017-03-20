@@ -15,11 +15,11 @@ namespace RSSMachine
         /// <summary>
         /// Собыитие на нажатие кнопки "Продолжить".
         /// </summary>
-        public event EventHandler ContinueButtonClicked = delegate { };
+        public event EventHandler ContinueButtonClick = delegate { };
 
         private void btnContinue_Click(object sender, EventArgs e)
         {
-            ContinueButtonClicked(this, EventArgs.Empty);
+            ContinueButtonClick(this, EventArgs.Empty);
         }
     }
 }

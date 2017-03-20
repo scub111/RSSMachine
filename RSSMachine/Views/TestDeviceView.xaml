@@ -7,13 +7,44 @@
              mc:Ignorable="d"
              Background="#dddddd" Height="1920" Width="1080" Loaded="ViewBase_Loaded">
     <Grid>
-        <Button x:Name="btnBeep" Content="Beep" HorizontalAlignment="Left" Margin="60,76,0,0" VerticalAlignment="Top" Width="299" Height="140" FontSize="70" Click="btnBeep_Click"/>
-        <Button x:Name="btnGetStatus" Content="GetStatus" HorizontalAlignment="Left" Margin="60,280,0,0" VerticalAlignment="Top" Width="299" Height="140" FontSize="70" Click="btnGetStatus_Click"/>
-        <Label x:Name="lblLoopCount" Content="?" HorizontalAlignment="Left" Margin="544,280,0,0" VerticalAlignment="Top" Height="106" Width="482" FontSize="70"/>
-        <Label x:Name="lblControlStatus" Content="?" HorizontalAlignment="Left" Margin="544,684,0,0" VerticalAlignment="Top" Height="118" Width="422" FontSize="70"/>
-        <Button x:Name="btnReconnect" Content="Reconnect" HorizontalAlignment="Left" Margin="544,76,0,0" VerticalAlignment="Top" Width="379" Height="140" FontSize="70" Click="btnReconnect_Click"/>
-        <Label x:Name="lblCycleSpan" Content="?" HorizontalAlignment="Left" Margin="544,424,0,0" VerticalAlignment="Top" Height="106" Width="482" FontSize="70"/>
-        <Label x:Name="lblQueueCount" Content="?" HorizontalAlignment="Left" Margin="544,530,0,0" VerticalAlignment="Top" Height="106" Width="482" FontSize="70"/>
+        <local:HMIButton x:Name="btnBeep" HorizontalAlignment="Left" Margin="686,34,0,0" VerticalAlignment="Top" Height="150" Width="158" CaptionFontSize="50" Text="" Click="btnBeep_Click">
+            <local:HMIButton.FillBrush>
+                <ImageBrush ImageSource="/image/Actions-speaker-icon.png" Stretch="Uniform"/>
+            </local:HMIButton.FillBrush>
+        </local:HMIButton>
+        <Rectangle x:Name="recMouse" RadiusY="10" RadiusX="10" Stroke="Black" Margin="34,34,660,1602" >
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" >
+                    <GradientStop Color="#FFFFFFFE" Offset="0"/>
+                    <GradientStop Color="#FFA2A2A2" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <local:HMIButton x:Name="btnAllow" HorizontalAlignment="Left" Margin="69,142,0,0" VerticalAlignment="Top" Height="150" Width="158" CaptionFontSize="50" Text="" Click="btnAllow_Click" ClickUp="btnAllow_ClickUp">
+            <local:HMIButton.FillBrush>
+                <ImageBrush ImageSource="/image/Actions-dialog-ok-apply-icon.png" Stretch="Uniform"/>
+            </local:HMIButton.FillBrush>
+        </local:HMIButton>
+        <local:HMIButton x:Name="btnDeny" HorizontalAlignment="Left" Margin="232,142,0,0" VerticalAlignment="Top" Height="150" Width="158" CaptionFontSize="50" Text="" Click="btnDeny_Click" ClickUp="btnDeny_ClickUp">
+            <local:HMIButton.FillBrush>
+                <ImageBrush ImageSource="/image/Actions-edit-delete-icon.png" Stretch="Uniform"/>
+            </local:HMIButton.FillBrush>
+        </local:HMIButton>
+        <TextBlock x:Name="txtCaption" TextWrapping="Wrap" Canvas.Top="6.002" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="Пульт кассира" Margin="34,34,660,1810" Height="76" Width="386" TextAlignment="Center"/>
+        <Rectangle x:Name="recMouse_Copy" RadiusY="10" RadiusX="10" Stroke="Black" Margin="34,404,236,1149" >
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" >
+                    <GradientStop Color="#FFFFFFFE" Offset="0"/>
+                    <GradientStop Color="#FFA2A2A2" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock x:Name="txtCaption_Copy" TextWrapping="Wrap" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="Статистика" Margin="34,404,660,1440" Height="76" Width="386" TextAlignment="Center"/>
+        <Label x:Name="lblLoopCount" Content="?" HorizontalAlignment="Left" Margin="34,485,0,0" VerticalAlignment="Top" Height="90" Width="810" FontSize="50"/>
+        <Label x:Name="lblCycleSpan" Content="?" HorizontalAlignment="Left" Margin="34,580,0,0" VerticalAlignment="Top" Height="80" Width="810" FontSize="50"/>
+        <Label x:Name="lblQueueCount" Content="?" HorizontalAlignment="Left" Margin="34,665,0,0" VerticalAlignment="Top" Height="82" Width="810" FontSize="50"/>
+
+
 
     </Grid>
 </local:ViewBase>

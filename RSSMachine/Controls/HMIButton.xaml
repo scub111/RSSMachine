@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:RSSMachine"
 	x:Class="RSSMachine.HMIButton"
 	mc:Ignorable="d"
-	Width="150" Height="40" >
-	<Grid>
+	Width="150" Height="40" MouseLeftButtonDown="HMIBase_MouseLeftButtonDown" MouseLeftButtonUp="HMIBase_MouseLeftButtonUp" MouseLeave="HMIBase_MouseLeave">
+    <Grid>
         <!--
         <ToolTipService.ToolTip>
             <TextBlock x:Name="tbToolTip" MaxWidth="350" 
@@ -16,80 +16,81 @@
         </ToolTipService.ToolTip>
         -->
         <VisualStateManager.VisualStateGroups>
-			<VisualStateGroup x:Name="MouseStateGroup">
-				<VisualStateGroup.Transitions>
-					<VisualTransition GeneratedDuration="0"/>
-				</VisualStateGroup.Transitions>
-				<VisualState x:Name="ControlMouseEnter">
-					<Storyboard>
-						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
-						<ColorAnimation Duration="0" To="Blue" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
-					</Storyboard>
-				</VisualState>
-				<VisualState x:Name="ControlMouseLeave"/>
-			</VisualStateGroup>
-			<VisualStateGroup x:Name="ValueStateGroup">
-				<VisualState x:Name="ControlValueON">
-					<Storyboard>
-						<ColorAnimation Duration="0" To="Black" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtCaption" d:IsOptimized="True"/>
-						<ColorAnimation Duration="0" To="#FFA2A2A2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
-					</Storyboard>
-				</VisualState>
-                <VisualState x:Name="ControlValueOFF">
-					<Storyboard>
-                		<ColorAnimation Duration="0" To="Black" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtCaption" d:IsOptimized="True"/>
-						<ColorAnimation Duration="0" To="#FFA2A2A2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
-                	</Storyboard>
-				</VisualState>
-				<VisualState x:Name="ControlValueUnknown">
+            <VisualStateGroup x:Name="MouseStateGroup">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="ControlMouseEnter">
+                    <Storyboard>
+                        <DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
+                        <ColorAnimation Duration="0" To="Blue" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
+                    </Storyboard>
                 </VisualState>
-			</VisualStateGroup>
+                <VisualState x:Name="ControlMouseLeave"/>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="ValueStateGroup">
+                <VisualState x:Name="ControlValueON">
+                    <Storyboard>
+                        <ColorAnimation Duration="0" To="Black" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtCaption" d:IsOptimized="True"/>
+                        <ColorAnimation Duration="0" To="#FFA2A2A2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ControlValueOFF">
+                    <Storyboard>
+                        <ColorAnimation Duration="0" To="Black" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtCaption" d:IsOptimized="True"/>
+                        <ColorAnimation Duration="0" To="#FFA2A2A2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="recMouse" d:IsOptimized="True"/>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ControlValueUnknown">
+                </VisualState>
+            </VisualStateGroup>
             <VisualStateGroup x:Name="ActualStateGroup">
-				<VisualState x:Name="ControlActualTrue">
-                	<Storyboard>
-                		<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="vwWarning">
-                			<DiscreteObjectKeyFrame KeyTime="0">
-                				<DiscreteObjectKeyFrame.Value>
-                					<Visibility>Collapsed</Visibility>
-                				</DiscreteObjectKeyFrame.Value>
-                			</DiscreteObjectKeyFrame>
-                		</ObjectAnimationUsingKeyFrames>
-                	</Storyboard>
+                <VisualState x:Name="ControlActualTrue">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="vwWarning">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
                 </VisualState>
                 <VisualState x:Name="ControlActualFalse">
-                	<Storyboard>
-                		<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="vwWarning">
-                			<DiscreteObjectKeyFrame KeyTime="0">
-                				<DiscreteObjectKeyFrame.Value>
-                					<Visibility>Visible</Visibility>
-                				</DiscreteObjectKeyFrame.Value>
-                			</DiscreteObjectKeyFrame>
-                		</ObjectAnimationUsingKeyFrames>
-                	</Storyboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="vwWarning">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
                 </VisualState>
-			</VisualStateGroup>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-		<Rectangle x:Name="recMouse" RadiusY="10" RadiusX="10" Stroke="Black" Opacity="0.745">
-			<Rectangle.Fill>
-				<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-					<GradientStop Color="#FFFFFFFE" Offset="0"/>
-					<GradientStop Color="#FFA2A2A2" Offset="1"/>
-				</LinearGradientBrush>
-			</Rectangle.Fill>
-		</Rectangle>
-		<TextBlock x:Name="txtCaption" TextWrapping="Wrap" Canvas.Top="6.002" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="???"/>
-		<Viewbox x:Name="vwWarning" Canvas.Left="60" Canvas.Top="5" Visibility="Collapsed">
+        <Rectangle x:Name="recMouse" RadiusY="10" RadiusX="10" Stroke="Black" >
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" >
+                    <GradientStop Color="#FFFFFFFE" Offset="0"/>
+                    <GradientStop Color="#FFA2A2A2" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock x:Name="txtCaption" TextWrapping="Wrap" Canvas.Top="6.002" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="???"/>
+        <Viewbox x:Name="vwWarning" Canvas.Left="60" Canvas.Top="5" Visibility="Collapsed">
             <Grid Height="31" Width="31">
-            	<Path Data="M15.5005,-0.596458 L30.5005,31.0358 L0.500407,31.0358 z" Stretch="Fill" Stroke="Black" UseLayoutRounding="False">
-            		<Path.Fill>
-            			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            				<GradientStop Color="#FFC2E000" Offset="0"/>
-            				<GradientStop Color="#FFF0410E" Offset="1"/>
-            			</LinearGradientBrush>
-            		</Path.Fill>
-            	</Path>
-            	<TextBlock TextWrapping="Wrap" Text="!" FontSize="26.667" TextAlignment="Center"/>
+                <Path Data="M15.5005,-0.596458 L30.5005,31.0358 L0.500407,31.0358 z" Stretch="Fill" Stroke="Black" UseLayoutRounding="False">
+                    <Path.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFC2E000" Offset="0"/>
+                            <GradientStop Color="#FFF0410E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Path.Fill>
+                </Path>
+                <TextBlock TextWrapping="Wrap" Text="!" FontSize="26.667" TextAlignment="Center"/>
             </Grid>
-		</Viewbox>
-	</Grid>
+        </Viewbox>
+        <Rectangle x:Name="recFill" RadiusY="10" RadiusX="10" Stroke="Black" StrokeThickness="0"/>
+    </Grid>
 </local:HMIBase>

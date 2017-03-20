@@ -40,6 +40,9 @@ namespace RSSMachine
     {
         public static async Task<TResult> WithTimeout<TResult>(this Task<TResult> task, TimeSpan timeout)
         {
+            if (task.Status != System.Threading.Tasks.TaskStatus.Running)
+                task.Start();
+
             if (task == await Task.WhenAny(task, Task.Delay(timeout)))
             {
                 return await task;
@@ -53,8 +56,11 @@ namespace RSSMachine
         /// <param name="timeout">Время, за которое она должна выполнится, мс.</param>
         /// <param name="generateExeption">Генерировать ли исключение, если вышло время</param>
         /// <param name="exeptionText">Сообщение исключения.</param>
-        public static async Task<bool> WithTimeoutBool(this Task<bool> task, TimeSpan timeout, bool generateExeption = false, string exeptionText = "")
+        public static async Task<bool> WithTimeout(this Task<bool> task, TimeSpan timeout, bool generateExeption = false, string exeptionText = "")
         {
+            if (task.Status != System.Threading.Tasks.TaskStatus.Running)
+                task.Start();
+
             if (task == await Task.WhenAny(task, Task.Delay(timeout)))
             {
                 return await task;
@@ -72,18 +78,15 @@ namespace RSSMachine
 
     public class RSSController
     {
-        public RSSController(string portName, bool simulation = false)
+        public RSSController()
         {
-            PortName = portName;
-            port = new RssMachineSerialPort(portName, simulation);
-            port.ReadTimeout = 1000;
-            port.WriteTimeout = 1000;
-
             ControlStatus = new ControlStatus();
             LoopSuccessCounter = 0;
             LoopFaultCounter = 0;
 
-            LoopThread = new Thread(LoopMapInfo);
+            waitHandle = new ManualResetEvent(false);
+
+            LoopThread = new Thread(MainLoop);
             LoopThread.Start();
 
             cycleTime = new Stopwatch();
@@ -91,6 +94,14 @@ namespace RSSMachine
 
             queueLock = new object();
             queueActions = new Collection<Action>();
+        }
+
+        public void PostContructor(string portName = "COM1", bool simulation = false)
+        {
+            PortName = portName;
+            port = new RssMachineSerialPort(portName, simulation);
+            port.ReadTimeout = 1000;
+            port.WriteTimeout = 1000;
         }
 
         /// <summary>
@@ -102,7 +113,12 @@ namespace RSSMachine
         /// Главный циклический поток передачи данных с контроллером.
         /// </summary>
         Thread LoopThread;
-        
+
+        /// <summary>
+        /// Объект синхронизации потоков.
+        /// </summary>
+        private EventWaitHandle waitHandle;
+
         /// <summary>
         /// Имя порта.
         /// </summary>
@@ -122,6 +138,13 @@ namespace RSSMachine
         /// Статус пульта кассира.
         /// </summary>
         public ControlStatus ControlStatus { get; set; }
+
+        /// <summary>
+        /// Статус пульта кассира (симуляция).
+        /// </summary>
+        public ControlStatus ControlStatusSim
+        { get { return port.ControlStatusSim; } }
+            
 
         /// <summary>
         /// Счетчик удачнных запросов.
@@ -149,6 +172,29 @@ namespace RSSMachine
         public int QueueCount
         {
             get { return queueActions.Count; }
+        }
+
+        /// <summary>
+        /// Поиск COM-порта RSS-контроллера.
+        /// </summary>
+        /// <returns></returns>
+        public static string FindPortName()
+        {
+            string[] portNames = SerialPort.GetPortNames();
+            foreach (string portName in portNames)
+            {
+                try
+                {
+                    RSSController rssController = new RSSController();
+                    rssController.PostContructor(portName);
+                    if (rssController.GetControlStatus(true))
+                        return portName;
+                }
+                catch
+                { }
+            }
+
+            return "";
         }
 
         /// <summary>
@@ -208,8 +254,7 @@ namespace RSSMachine
                     Thread.Sleep(100);
                 }
             });
-            task.Start();
-            return task.WithTimeoutBool(TimeSpan.FromSeconds(5), true, "Beep timeout exeption.");
+            return task.WithTimeout(TimeSpan.FromSeconds(5), true, "Beep timeout exeption.");
         }
 
         /// <summary>
@@ -232,14 +277,20 @@ namespace RSSMachine
                     Thread.Sleep(100);
                 }
             });
-            return task.WithTimeoutBool(TimeSpan.FromSeconds(60), true, "WaitControlStatusChanged exeption");
+            return task.WithTimeout(TimeSpan.FromSeconds(60), true, "WaitControlStatusChanged exeption");
         }
 
         /// <summary>
         /// Получение статуса с пульта кассира.
         /// </summary>
-        public void GetControlStatus()
+        public bool GetControlStatus(bool withOpenClosePort = false)
         {
+            bool result = false;
+
+            if (withOpenClosePort && !port.IsOpen)
+                port.Open();
+
+
             SendCommand(new byte[] { (byte)Address.Control, 0x2 });
 
             Thread.Sleep(100);
@@ -253,9 +304,15 @@ namespace RSSMachine
                     BitArray bitArray = new BitArray(new byte[] { buffer[4] });
                     ControlStatus.btnAllow = bitArray[0];
                     ControlStatus.btnDeny = bitArray[1];
+                    result = true;
                     break;
                 }
             }
+
+            if (withOpenClosePort)
+                port.Close();
+
+            return result;
         }
 
         /// <summary>
@@ -282,14 +339,32 @@ namespace RSSMachine
             return buffer;
         }
 
-        private void LoopMapInfo()
+        /// <summary>
+        /// Запуск потока обмена информацией с контроллером.
+        /// </summary>
+        public void Start()
+        {
+            waitHandle.Set();
+        }
+
+        /// <summary>
+        /// Останов потока обмена информацией с контроллером.
+        /// </summary>
+        public void Stop()
+        {
+            waitHandle.Reset();
+        }
+
+        private void MainLoop()
         {
             while (true)
             {
+                waitHandle.WaitOne();
+
                 cycleTime.Restart();
                 try
                 {
-                    ThreadEx.CallTimedOutMethodSync(CycleMethod, 5000);
+                    ThreadEx.CallTimedOutMethodSync(MainMethod, 5000);
                 }
                 catch
                 {
@@ -300,7 +375,7 @@ namespace RSSMachine
             }
         }
 
-        private void CycleMethod()
+        private void MainMethod()
         {
             try
             {

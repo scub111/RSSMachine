@@ -71,6 +71,9 @@
     <Compile Include="Classes\RssMachineSerialPort.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\SetControllerView.xaml.cs">
+      <DependentUpon>SetControllerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelectProductView.xaml.cs">
       <DependentUpon>SelectProductView.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,10 @@
     <Page Include="Controls\UpdateControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SetControllerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SelectProductView.xaml">
       <SubType>Designer</SubType>
@@ -231,6 +238,15 @@
     <Resource Include="image\take_pachka_green.png" />
     <Resource Include="image\waiting.png" />
     <Resource Include="image\yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\Actions-dialog-ok-apply-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\Actions-edit-delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\Actions-speaker-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
